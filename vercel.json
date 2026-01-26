@@ -60,10 +60,7 @@
       ]
     }
   ],
-  "framework": {
-    "name": "nextjs",
-    "version": "14.0.0"
-  },
+  "framework": "nextjs",
   "rewrites": [
     {
       "source": "/api/:path*",
