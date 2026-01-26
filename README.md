@@ -29,7 +29,7 @@ npm run db:setup
 npm run dev
 ```
 
-Visit: **http://localhost:3000**
+Visit: **https://www.uaemartb2b.com**
 
 ## 📦 Tech Stack
 
@@ -109,9 +109,9 @@ JWT_SECRET=your-32-character-secret
 NEXTAUTH_SECRET=your-32-character-secret
 
 # URLs
-NEXTAUTH_URL=http://localhost:3000
-NEXT_PUBLIC_APP_URL=http://localhost:3000
-NEXT_PUBLIC_API_URL=http://localhost:3000/api
+NEXTAUTH_URL=https://www.uaemartb2b.com
+NEXT_PUBLIC_APP_URL=https://www.uaemartb2b.com
+NEXT_PUBLIC_API_URL=https://www.uaemartb2b.com/api
 ```
 
 ## 🔑 Default Admin Account
