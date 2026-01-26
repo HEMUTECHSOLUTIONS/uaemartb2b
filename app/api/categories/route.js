@@ -1,3 +1,5 @@
+// Mark this route as dynamic for Next.js 14 (Vercel)
+export const dynamic = "force-dynamic";
 // API Route: Get All Categories
 // Path: /api/categories/route.js
 
