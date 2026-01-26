@@ -3,7 +3,6 @@
   "name": "uaemart",
   "public": false,
   "buildCommand": "npm run build",
-  "outputDirectory": "out",
   "installCommand": "npm ci",
   "env": {
     "NEXT_PUBLIC_SUPABASE_URL": "",
@@ -14,28 +13,6 @@
     "NEXTAUTH_SECRET": "",
     "NEXTAUTH_URL": ""
   },
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/api/$1",
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "status": 200
-    }
-  ],
   "headers": [
     {
       "source": "/api/(.*)",
@@ -47,6 +24,14 @@
         {
           "key": "Access-Control-Allow-Origin",
           "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
         }
       ]
     },
