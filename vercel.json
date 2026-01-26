@@ -5,43 +5,15 @@
   "buildCommand": "npm run build",
   "outputDirectory": "out",
   "installCommand": "npm ci",
-  "env": [
-    {
-      "key": "NEXT_PUBLIC_SUPABASE_URL",
-      "scope": ["production", "preview", "development"],
-      "target": ["production", "preview"]
-    },
-    {
-      "key": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
-      "scope": ["production", "preview", "development"],
-      "target": ["production", "preview"]
-    },
-    {
-      "key": "SUPABASE_SERVICE_ROLE_KEY",
-      "scope": ["production", "preview"],
-      "target": ["production"]
-    },
-    {
-      "key": "DATABASE_URL",
-      "scope": ["production"],
-      "target": ["production"]
-    },
-    {
-      "key": "JWT_SECRET",
-      "scope": ["production"],
-      "target": ["production"]
-    },
-    {
-      "key": "NEXTAUTH_SECRET",
-      "scope": ["production"],
-      "target": ["production"]
-    },
-    {
-      "key": "NEXTAUTH_URL",
-      "scope": ["production"],
-      "target": ["production"]
-    }
-  ],
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "",
+    "SUPABASE_SERVICE_ROLE_KEY": "",
+    "DATABASE_URL": "",
+    "JWT_SECRET": "",
+    "NEXTAUTH_SECRET": "",
+    "NEXTAUTH_URL": ""
+  },
   "builds": [
     {
       "src": "package.json",
