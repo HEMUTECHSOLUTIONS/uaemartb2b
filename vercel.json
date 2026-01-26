@@ -67,7 +67,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "dest": "/api/:path*"
+      "destination": "/api/:path*"
     }
   ]
 }
