@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - UAE Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+        .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); transition: all 0.3s; }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between gap-4">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-store text-3xl text-purple-600"></i>
+                    <span class="text-2xl font-bold text-purple-600">UAE Mart</span>
+                </a>
+
+                <!-- Categories Dropdown -->
+                <div class="relative hidden md:block">
+                    <button onclick="toggleCategories()" class="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition font-semibold shadow-lg">
+                        <i class="fas fa-th text-sm"></i>
+                        <span>All Categories</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="categoriesDropdown" class="hidden absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-2xl border border-gray-200 z-50 max-h-[500px] overflow-y-auto">
+                        <!-- Categories will be loaded dynamically -->
+                    </div>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 max-w-2xl mx-8">
+                    <div class="relative w-full">
+                        <input type="text" placeholder="Search products and services..." class="w-full px-4 py-3 pr-12 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-blue-700">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden lg:flex items-center gap-4">
+                    <a href="become-seller.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
+                        <i class="fas fa-store"></i>Become a Seller
+                    </a>
+                    <a href="post-requirements.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
+                        <i class="fas fa-clipboard-list"></i>Post Requirements
+                    </a>
+                    <a href="login.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
+                        <i class="fas fa-sign-in-alt"></i>Login
+                    </a>
+                    <a href="signup.html" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition shadow-lg">
+                        Sign Up
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto glass-card p-8 animate-fadeIn">
+            <h1 class="text-3xl font-bold text-center mb-2"><i class="fas fa-sign-in-alt mr-2 text-purple-600"></i>Login</h1>
+            <p class="text-gray-600 text-center mb-6">Access your UAE Mart account</p>
+
+            <form id="loginForm" class="space-y-6">
+                <div id="messageBox" class="hidden p-4 rounded-lg"></div>
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2"><i class="fas fa-user-tag mr-2"></i>Account Type</label>
+                    <select id="userType" class="w-full p-3 border-2 rounded-lg focus:border-purple-500 focus:outline-none">
+                        <option value="buyer">👤 Buyer</option>
+                        <option value="seller">🏪 Seller</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2"><i class="fas fa-envelope mr-2"></i>Email</label>
+                    <input type="email" id="email" required class="w-full p-3 border-2 rounded-lg focus:border-purple-500 focus:outline-none" placeholder="your@email.com">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold mb-2"><i class="fas fa-lock mr-2"></i>Password</label>
+                    <input type="password" id="password" required class="w-full p-3 border-2 rounded-lg focus:border-purple-500 focus:outline-none" placeholder="UAEmart@123">
+                </div>
+
+                <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-semibold text-lg">
+                    <i class="fas fa-sign-in-alt mr-2"></i>Login
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p>Don't have an account? <a href="signup.html" class="text-purple-600 font-semibold hover:underline">Sign up</a></p>
+                <div class="mt-4 p-3 bg-blue-50 rounded-lg">
+                    <p class="text-sm text-blue-800"><i class="fas fa-info-circle mr-2"></i><strong>Default Password:</strong> UAEmart@123</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass-card mx-4 my-4 p-6 text-center">
+        <p class="text-gray-700">© 2025 UAE Mart</p>
+    </footer>
+
+    <script>
+        // Initialize Categories from default data - Force reset to 9 categories
+        function initializeCategories() {
+            // Force reset to ensure 9 categories only
+            const defaultCategories = [
+                    {id: 1, name: 'Food, Accommodation and Apparels', parentCategory: '', subcategories: 'Veg Restaurants,Non-Veg Restaurants,Hotels,1 Star Hotels,2 Star Hotels,3 Star Hotels,4 Star Hotels,5 Star Hotels,Resorts,Family Hotels,Budget Hotels,Cafes & Bakeries,Catering Services,Food Supplies,Men\'s Clothing,Women\'s Clothing,Kids Clothing,Footwear & Accessories', icon: 'fa-utensils', description: 'Food hospitality and fashion products', totalProducts: 163000, totalSuppliers: 3630, status: 'active', displayOrder: 1, createdAt: '2024-01-01 00:00:00'},
+                    {id: 2, name: 'Education', parentCategory: '', subcategories: 'Schools & Colleges,Training Centers,Online Learning,Educational Materials,Tutoring Services,Language Institutes,Vocational Training', icon: 'fa-graduation-cap', description: 'Educational services and training programs', totalProducts: 38000, totalSuppliers: 760, status: 'active', displayOrder: 2, createdAt: '2024-01-01 00:00:00'},
+                    {id: 3, name: 'Health', parentCategory: '', subcategories: 'Hospitals & Clinics,Pharmacies,Medical Equipment,Healthcare Services,Wellness Centers,Diagnostic Labs,Dental Services', icon: 'fa-heartbeat', description: 'Medical equipment and healthcare supplies', totalProducts: 55000, totalSuppliers: 1120, status: 'active', displayOrder: 3, createdAt: '2024-01-01 00:00:00'},
+                    {id: 4, name: 'Industries', parentCategory: '', subcategories: 'Manufacturing,Construction Materials,Industrial Equipment,Heavy Machinery,Tools & Hardware,Safety Equipment,Raw Materials', icon: 'fa-industry', description: 'Industrial products and services', totalProducts: 300000, totalSuppliers: 6190, status: 'active', displayOrder: 4, createdAt: '2024-01-01 00:00:00'},
+                    {id: 5, name: 'Information Technology', parentCategory: '', subcategories: 'Software Development,IT Consulting,Cloud Services,Cybersecurity,Hardware & Networking,Web Development,Mobile Apps', icon: 'fa-laptop-code', description: 'Software development and IT solutions', totalProducts: 42000, totalSuppliers: 890, status: 'active', displayOrder: 5, createdAt: '2024-01-01 00:00:00'},
+                    {id: 6, name: 'Media and Entertainment', parentCategory: '', subcategories: 'Printing Services,Advertising,Event Management,Photography & Videography,Broadcasting,Digital Marketing,Content Creation', icon: 'fa-film', description: 'Media advertising and entertainment services', totalProducts: 32000, totalSuppliers: 720, status: 'active', displayOrder: 6, createdAt: '2024-01-01 00:00:00'},
+                    {id: 7, name: 'Real Estate', parentCategory: '', subcategories: 'Residential Properties,Commercial Properties,Land & Plots,Property Management,Real Estate Consulting,Interior Design,Furniture & Furnishing', icon: 'fa-building', description: 'Property and real estate related services', totalProducts: 24000, totalSuppliers: 450, status: 'active', displayOrder: 7, createdAt: '2024-01-01 00:00:00'},
+                    {id: 8, name: 'Travel and Tourism', parentCategory: '', subcategories: 'Tour Packages,Travel Agencies,Flight Booking,Hotel Booking,Car Rentals,Visa Services,Tourist Attractions', icon: 'fa-plane', description: 'Travel tourism and transportation services', totalProducts: 45000, totalSuppliers: 980, status: 'active', displayOrder: 8, createdAt: '2024-01-01 00:00:00'},
+                    {id: 9, name: 'Miscellaneous', parentCategory: '', subcategories: 'Cleaning Services,Logistics & Shipping,Automotive Services,Electronics Repair,Pet Services,Beauty & Spa,Financial Services', icon: 'fa-boxes', description: 'Other products and services', totalProducts: 85000, totalSuppliers: 1650, status: 'active', displayOrder: 9, createdAt: '2024-01-01 00:00:00'}
+                ];
+            localStorage.setItem('categories', JSON.stringify(defaultCategories));
+        }
+
+        // Load categories into dropdown
+        function loadCategoriesDropdown() {
+            const categories = JSON.parse(localStorage.getItem('categories') || '[]');
+            const activeCategories = categories.filter(cat => cat.status === 'active').sort((a, b) => a.displayOrder - b.displayOrder);
+            
+            let html = `
+                <a href="categories.html" class="flex items-center gap-3 px-4 py-3 hover:bg-purple-50 transition border-b border-gray-100">
+                    <i class="fas fa-list text-purple-600 text-lg w-6"></i>
+                    <span class="font-semibold text-gray-800">All Categories</span>
+                </a>
+            `;
+            
+            activeCategories.forEach(cat => {
+                const subcats = cat.subcategories ? cat.subcategories.split(',').slice(0, 3) : [];
+                
+                html += `
+                    <div class="border-b border-gray-100 hover:bg-purple-50 transition">
+                        <a href="categories.html?cat=${cat.id}" class="flex items-center gap-3 px-4 py-3">
+                            <i class="fas ${cat.icon} text-purple-600 text-lg w-6"></i>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-800">${cat.name}</div>
+                                <div class="text-xs text-gray-500">${cat.totalProducts?.toLocaleString() || 0}+ items</div>
+                            </div>
+                        </a>
+                        ${subcats.length > 0 ? `
+                            <div class="px-4 pb-2 text-xs text-gray-600 flex flex-wrap gap-1">
+                                ${subcats.map(sub => `<span class="bg-gray-100 px-2 py-1 rounded">${sub.trim()}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+            
+            document.getElementById('categoriesDropdown').innerHTML = html;
+        }
+
+        // Toggle categories dropdown
+        function toggleCategories() {
+            const dropdown = document.getElementById('categoriesDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('categoriesDropdown');
+            const categoriesButton = event.target.closest('button[onclick="toggleCategories()"]');
+            
+            if (!categoriesButton && !dropdown.classList.contains('hidden')) {
+                const clickedInsideDropdown = dropdown.contains(event.target);
+                if (!clickedInsideDropdown) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        });
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeCategories();
+            loadCategoriesDropdown();
+        });
+
+        const OFFLINE_MODE = window.location.protocol === 'file:';
+        const API_BASE = '/UAEMart/excel-system/api/';
+
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const userType = document.getElementById('userType').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            if (OFFLINE_MODE) {
+                const users = JSON.parse(localStorage.getItem(userType === 'buyer' ? 'buyers' : 'sellers') || '[]');
+                const user = users.find(u => u.email === email);
+                if (user && password === 'UAEmart@123') {
+                    localStorage.setItem('currentUser', JSON.stringify(user));
+                    showMessage('success', 'Login successful!');
+                    setTimeout(() => window.location.href = 'dashboard.html', 1000);
+                } else {
+                    showMessage('error', 'Invalid credentials');
+                }
+            } else {
+                try {
+                    const res = await fetch(API_BASE + (userType === 'buyer' ? 'buyer-login.php' : 'seller-login.php'), {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, password })
+                    });
+                    const data = await res.json();
+                    if (data.success) {
+                        localStorage.setItem('currentUser', JSON.stringify(data.user));
+                        showMessage('success', 'Login successful!');
+                        setTimeout(() => window.location.href = 'dashboard.html', 1000);
+                    } else {
+                        showMessage('error', data.message);
+                    }
+                } catch (err) {
+                    showMessage('error', 'Login error');
+                }
+            }
+        });
+
+        function showMessage(type, text) {
+            const box = document.getElementById('messageBox');
+            box.className = `p-4 rounded-lg ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+            box.innerHTML = `<i class="fas fa-${type === 'success' ? 'check' : 'times'}-circle mr-2"></i>${text}`;
+            box.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

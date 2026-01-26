@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Categories - UAE Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; }
+        .company-card-small { max-height: 280px; }
+        .featured-companies-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+        @media (max-width: 768px) { .featured-companies-container { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); } }
+        .premium-badge { background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #000; }
+        .premium-border { border: 2px solid #FFD700; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+        .selected-category-bar { display: flex; flex-direction: column; }
+        @media (min-width: 768px) { .selected-category-bar { flex-direction: row; } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between gap-4">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-store text-3xl text-purple-600"></i>
+                    <span class="text-2xl font-bold gradient-text">UAE Mart</span>
+                </a>
+
+                <!-- Categories Dropdown -->
+                <div class="relative hidden md:block">
+                    <button onclick="toggleCategories()" class="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition font-semibold shadow-lg">
+                        <i class="fas fa-th text-sm"></i>
+                        <span>All Categories</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="categoriesDropdown" class="hidden absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-2xl border border-gray-200 z-50 max-h-[500px] overflow-y-auto">
+                        <!-- Categories will be loaded dynamically -->
+                    </div>
+                </div>
+
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 max-w-2xl mx-8">
+                    <div class="relative w-full">
+                        <input type="text" placeholder="Search products and services..." class="w-full px-4 py-3 pr-12 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-blue-700">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden lg:flex items-center gap-4">
+                    <a href="become-seller.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
+                        <i class="fas fa-store"></i>Become a Seller
+                    </a>
+                    <a href="post-requirements.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
+                        <i class="fas fa-clipboard-list"></i>Post Requirements
+                    </a>
+                    <a href="login.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
+                        <i class="fas fa-sign-in-alt"></i>Login
+                    </a>
+                    <a href="signup.html" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition shadow-lg">
+                        Sign Up
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <p  id="categoryDescription"p>
+        </div>
+
+        <!-- All categories view -->
+        <div id="allCategoriesView">
+            <div class="glass-card p-6 mb-8 animate-fadeIn" id="filterSection">
+                <h2 class="text-lg font-semibold mb-4"><i class="fas fa-filter mr-2 text-purple-600"></i>Filter Results</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2"><i class="fas fa-map-marker-alt mr-2"></i>Location</label>
+                        <select id="locationFilter" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" onchange="applyFilters()">
+                            <option value="">All UAE</option>
+                            <option value="Dubai">Dubai</option>
+                            <option value="Abu Dhabi">Abu Dhabi</option>
+                            <option value="Sharjah">Sharjah</option>
+                            <option value="Ajman">Ajman</option>
+                            <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+                            <option value="Fujairah">Fujairah</option>
+                            <option value="Umm Al-Quwain">Umm Al-Quwain</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2"><i class="fas fa-certificate mr-2"></i>Business Type</label>
+                        <select id="sellerTypeFilter" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" onchange="applyFilters()">
+                            <option value="">All</option>
+                            <option value="Verified">Verified</option>
+                            <option value="Premium">Premium</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div id="categoriesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Categories will be loaded dynamically with tree structure -->
+            </div>
+        </div>
+
+        <!-- Selected category view -->
+        <div id="selectedCategoryView" class="hidden animate-fadeIn">
+            <div class="glass-card p-4 mb-6 selected-category-bar md:items-center md:justify-between gap-4 md:gap-6">
+                <div class="text-2xl font-bold text-gray-900 md:flex md:items-center md:gap-2" id="selectedCategoryName">Selected Category</div>
+                <div class="flex flex-col md:flex-row md:items-end md:justify-end gap-3 w-full md:w-auto">
+                    <div class="flex flex-col w-full md:w-56">
+                        <label class="block text-sm font-medium text-gray-700 mb-1"><i class="fas fa-map-marker-alt mr-2"></i>Location</label>
+                        <select id="selectedLocationFilter" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" onchange="applyFilters()">
+                            <option value="">All UAE</option>
+                            <option value="Dubai">Dubai</option>
+                            <option value="Abu Dhabi">Abu Dhabi</option>
+                            <option value="Sharjah">Sharjah</option>
+                            <option value="Ajman">Ajman</option>
+                            <option value="Ras Al Khaimah">Ras Al Khaimah</option>
+                            <option value="Fujairah">Fujairah</option>
+                            <option value="Umm Al-Quwain">Umm Al-Quwain</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col w-full md:w-56">
+                        <label class="block text-sm font-medium text-gray-700 mb-1"><i class="fas fa-certificate mr-2"></i>Business Type</label>
+                        <select id="selectedSellerTypeFilter" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" onchange="applyFilters()">
+                            <option value="">All</option>
+                            <option value="Verified">Verified</option>
+                            <option value="Premium">Premium</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Left: category tree -->
+                <div id="selectedCategoryCard"></div>
+
+                <!-- Right: featured companies -->
+                <div class="lg:col-span-2">
+                    <div class="glass-card p-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <i class="fas fa-star text-purple-600 text-xl"></i>
+                            <h3 class="text-lg font-semibold text-gray-800">Featured Companies</h3>
+                        </div>
+                        <div id="categoryFeaturedCompanies" class="featured-companies-container">
+                            <!-- Featured companies will be loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-purple-600 to-blue-600 text-white mt-12">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-3xl font-bold mb-4"><i class="fas fa-store mr-2"></i>UAE Mart</div>
+                    <p class="opacity-90 mb-4">UAE's leading B2B marketplace connecting suppliers and buyers across all emirates.</p>
+                    <div class="text-sm opacity-80">© 2024 UAE Mart. All rights reserved.</div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="opacity-90 hover:opacity-100 transition"><i class="fas fa-home mr-2"></i>Home</a></li>
+                        <li><a href="buyer-details.html" class="opacity-90 hover:opacity-100 transition"><i class="fas fa-user mr-2"></i>Buyer Details</a></li>
+                        <li><a href="become-seller.html" class="opacity-90 hover:opacity-100 transition"><i class="fas fa-store mr-2"></i>Become a Seller</a></li>
+                        <li><a href="post-requirements.html" class="opacity-90 hover:opacity-100 transition"><i class="fas fa-clipboard-list mr-2"></i>Post Requirements</a></li>
+                        <li><a href="login.html" class="opacity-90 hover:opacity-100 transition"><i class="fas fa-sign-in-alt mr-2"></i>Login</a></li>
+                        <li><a href="signup.html" class="opacity-90 hover:opacity-100 transition"><i class="fas fa-user-plus mr-2"></i>Sign Up</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Popular Categories</h3>
+                    <ul class="space-y-2" id="footerCategories">
+                        <li><a href="categories.html?cat=1" class="opacity-90 hover:opacity-100 transition"><i class="fas fa-utensils mr-2"></i>Food & Beverage</a></li>
+                        <li><a href="categories.html?cat=2" class="opacity-90 hover:opacity-100 transition"><i class="fas fa-hotel mr-2"></i>Accommodation & Apparels</a></li>
+                        <li><a href="categories.html?cat=3" class="opacity-90 hover:opacity-100 transition"><i class="fas fa-graduation-cap mr-2"></i>Education</a></li>
+                        <li><a href="categories.html?cat=4" class="opacity-90 hover:opacity-100 transition"><i class="fas fa-heartbeat mr-2"></i>Health</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Contact Us</h3>
+                    <ul class="space-y-2">
+                        <li class="opacity-90"><i class="fas fa-map-marker-alt mr-2"></i>Dubai, UAE</li>
+                        <li class="opacity-90"><i class="fas fa-phone mr-2"></i>+971-4-XXX-XXXX</li>
+                        <li class="opacity-90"><i class="fas fa-envelope mr-2"></i>info@uaemart.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize categories on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            initializeCategories();
+            loadCategoriesGrid();
+            loadCategoriesDropdown();
+        });
+
+        // Initialize Categories from default data - Force reset to 9 categories
+        function initializeCategories() {
+            const defaultCategories = [
+                {id: 1, name: 'Food, Accommodation and Apparels', parentCategory: '', subcategories: 'Veg Restaurants,Non-Veg Restaurants,Hotels,1 Star Hotels,2 Star Hotels,3 Star Hotels,4 Star Hotels,5 Star Hotels,Resorts,Family Hotels,Budget Hotels,Cafes & Bakeries,Catering Services,Food Supplies,Men\'s Clothing,Women\'s Clothing,Kids Clothing,Footwear & Accessories', icon: 'fa-utensils', description: 'Food hospitality and fashion products', totalProducts: 163000, totalSuppliers: 3630, status: 'active', displayOrder: 1, createdAt: '2024-01-01 00:00:00'},
+                {id: 2, name: 'Education', parentCategory: '', subcategories: 'Schools & Colleges,Training Centers,Online Learning,Educational Materials,Tutoring Services,Language Institutes,Vocational Training', icon: 'fa-graduation-cap', description: 'Educational services and training programs', totalProducts: 38000, totalSuppliers: 760, status: 'active', displayOrder: 2, createdAt: '2024-01-01 00:00:00'},
+                {id: 3, name: 'Health', parentCategory: '', subcategories: 'Hospitals & Clinics,Pharmacies,Medical Equipment,Healthcare Services,Wellness Centers,Diagnostic Labs,Dental Services', icon: 'fa-heartbeat', description: 'Medical equipment and healthcare supplies', totalProducts: 55000, totalSuppliers: 1120, status: 'active', displayOrder: 3, createdAt: '2024-01-01 00:00:00'},
+                {id: 4, name: 'Industries', parentCategory: '', subcategories: 'Manufacturing,Construction Materials,Industrial Equipment,Heavy Machinery,Tools & Hardware,Safety Equipment,Raw Materials', icon: 'fa-industry', description: 'Industrial products and services', totalProducts: 300000, totalSuppliers: 6190, status: 'active', displayOrder: 4, createdAt: '2024-01-01 00:00:00'},
+                {id: 5, name: 'Information Technology', parentCategory: '', subcategories: 'Software Development,IT Consulting,Cloud Services,Cybersecurity,Hardware & Networking,Web Development,Mobile Apps', icon: 'fa-laptop-code', description: 'Software development and IT solutions', totalProducts: 42000, totalSuppliers: 890, status: 'active', displayOrder: 5, createdAt: '2024-01-01 00:00:00'},
+                {id: 6, name: 'Media and Entertainment', parentCategory: '', subcategories: 'Printing Services,Advertising,Event Management,Photography & Videography,Broadcasting,Digital Marketing,Content Creation', icon: 'fa-film', description: 'Media advertising and entertainment services', totalProducts: 32000, totalSuppliers: 720, status: 'active', displayOrder: 6, createdAt: '2024-01-01 00:00:00'},
+                {id: 7, name: 'Real Estate', parentCategory: '', subcategories: 'Residential Properties,Commercial Properties,Land & Plots,Property Management,Real Estate Consulting,Interior Design,Furniture & Furnishing', icon: 'fa-building', description: 'Property and real estate related services', totalProducts: 24000, totalSuppliers: 450, status: 'active', displayOrder: 7, createdAt: '2024-01-01 00:00:00'},
+                {id: 8, name: 'Travel and Tourism', parentCategory: '', subcategories: 'Tour Packages,Travel Agencies,Flight Booking,Hotel Booking,Car Rentals,Visa Services,Tourist Attractions', icon: 'fa-plane', description: 'Travel tourism and transportation services', totalProducts: 45000, totalSuppliers: 980, status: 'active', displayOrder: 8, createdAt: '2024-01-01 00:00:00'},
+                {id: 9, name: 'Miscellaneous', parentCategory: '', subcategories: 'Cleaning Services,Logistics & Shipping,Automotive Services,Electronics Repair,Pet Services,Beauty & Spa,Financial Services', icon: 'fa-boxes', description: 'Other products and services', totalProducts: 85000, totalSuppliers: 1650, status: 'active', displayOrder: 9, createdAt: '2024-01-01 00:00:00'}
+            ];
+            localStorage.setItem('categories', JSON.stringify(defaultCategories));
+        }
+
+        // Get URL parameter for specific category
+        function getUrlParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        // Load categories grid with tree structure
+        function loadCategoriesGrid() {
+            const categories = JSON.parse(localStorage.getItem('categories') || '[]');
+            const activeCategories = categories.filter(cat => cat.status === 'active').sort((a, b) => a.displayOrder - b.displayOrder);
+            
+            const selectedCatId = getUrlParameter('cat');
+            const selectedCategory = selectedCatId ? activeCategories.find(cat => cat.id == selectedCatId) : null;
+            
+            const iconColors = [
+                'from-green-500 to-emerald-600',
+                'from-blue-500 to-indigo-600',
+                'from-yellow-500 to-orange-600',
+                'from-red-500 to-pink-600',
+                'from-gray-600 to-slate-700',
+                'from-indigo-500 to-purple-600',
+                'from-pink-500 to-rose-600',
+                'from-orange-500 to-red-600',
+                'from-cyan-500 to-blue-600',
+                'from-purple-500 to-indigo-600'
+            ];
+            
+            const categoriesToDisplay = selectedCategory ? [selectedCategory] : activeCategories;
+            let html = '';
+
+            categoriesToDisplay.forEach((cat, index) => {
+                const subcats = cat.subcategories ? cat.subcategories.split(',') : [];
+                const gradientClass = iconColors[index % iconColors.length];
+                
+                html += `
+                    <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn cursor-pointer" data-category="${cat.id}" onclick="window.location.href='categories.html?cat=${cat.id}'">
+                        <div class="bg-gradient-to-br ${gradientClass} p-8">
+                            <div class="flex items-center justify-between mb-4">
+                                <i class="fas ${cat.icon} text-5xl text-white"></i>
+                                <div class="text-right text-white">
+                                    <div class="text-sm opacity-90">Products</div>
+                                    <div class="text-2xl font-bold">${cat.totalProducts?.toLocaleString() || 0}+</div>
+                                </div>
+                            </div>
+                            <h2 class="text-2xl font-bold text-white mb-2 category-card-title">${cat.name}</h2>
+                            <p class="text-white opacity-90 text-sm">${cat.description}</p>
+                        </div>
+                        
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="font-semibold text-gray-800 flex items-center gap-2">
+                                    <i class="fas fa-list text-purple-600"></i>
+                                    Subcategories
+                                </h3>
+                                <span class="text-sm text-gray-500">${subcats.length} items</span>
+                            </div>
+                            
+                            <div class="space-y-2 max-h-64 overflow-y-auto" data-subcategories="${cat.id}">
+                                ${subcats.map(subcat => `
+                                    <div class="flex items-center gap-3 p-3 hover:bg-purple-50 rounded-lg transition-colors cursor-pointer group search-item" data-search-text="${subcat.trim().toLowerCase()}">
+                                        <div class="flex-shrink-0">
+                                            <i class="fas fa-chevron-right text-purple-500 group-hover:translate-x-1 transition-transform"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <span class="text-gray-700 group-hover:text-purple-600 font-medium">${subcat.trim()}</span>
+                                        </div>
+                                        <div class="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                                            <i class="fas fa-arrow-right text-purple-600"></i>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-200 flex items-center justify-between">
+                                <div class="text-sm text-gray-600">
+                                    <i class="fas fa-users text-purple-600 mr-2"></i>
+                                    <span class="font-semibold">${cat.totalSuppliers?.toLocaleString() || 0}</span> Suppliers
+                                </div>
+                                <button onclick="window.location.href='business-profile.html'" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-colors">
+                                    <i class="fas fa-store mr-2"></i>View Suppliers
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            if (selectedCategory) {
+                document.getElementById('allCategoriesView').classList.add('hidden');
+                document.getElementById('selectedCategoryView').classList.remove('hidden');
+                document.getElementById('selectedCategoryCard').innerHTML = html;
+                
+                const selectedCategoryNameEl = document.getElementById('selectedCategoryName');
+                if (selectedCategoryNameEl) {
+                    selectedCategoryNameEl.innerHTML = `
+                        <span class="inline-flex items-center gap-2">
+                            <i class="fas ${selectedCategory.icon} text-purple-600"></i>
+                            <span>${selectedCategory.name}</span>
+                        </span>
+                    `;
+                }
+                // Keep category title visible in the left box
+                document.querySelectorAll('#selectedCategoryCard .category-card-title').forEach(el => el.style.display = 'block');
+                loadCompanyProfiles(selectedCategory.id);
+            } else {
+                document.getElementById('allCategoriesView').classList.remove('hidden');
+                document.getElementById('selectedCategoryView').classList.add('hidden');
+                document.getElementById('categoriesGrid').innerHTML = html || '<div class="col-span-full text-center py-12 text-gray-500">No categories found</div>';
+            }
+        }
+
+        // Company profiles data mapped to categories - All 11 companies per category
+        const companyProfilesData = {
+            1: { file: '../clients/food-accommodation-apparels/restaurants/index.html', companies: [
+                {name: 'Thai Spice Kitchen', icon: 'fa-utensils', location: 'Dubai', sellerType: 'Premium', description: 'Authentic Thai cuisine'},
+                {name: 'BBQ Master Grill', icon: 'fa-fire', location: 'Sharjah', sellerType: 'Verified', description: 'Premium grilled meats'},
+                {name: 'Dragon Palace Chinese', icon: 'fa-utensils', location: 'Dubai', sellerType: 'Normal', description: 'Asian fusion cuisine'},
+                {name: 'Levant Mezze House', icon: 'fa-leaf', location: 'Abu Dhabi', sellerType: 'Premium', description: 'Mediterranean cuisine'},
+                {name: 'Cheese & Wine Bistro', icon: 'fa-wine-glass', location: 'Dubai', sellerType: 'Verified', description: 'European bistro'},
+                {name: 'Spice Kitchen Fine Dining', icon: 'fa-star', location: 'Dubai', sellerType: 'Premium', description: 'Indian fine dining'},
+                {name: 'Pasta Bella Italia', icon: 'fa-utensils', location: 'Sharjah', sellerType: 'Normal', description: 'Italian restaurant'},
+                {name: 'Sushi Masters', icon: 'fa-fish', location: 'Dubai', sellerType: 'Premium', description: 'Japanese cuisine'},
+                {name: 'Coffee Corner Cafe', icon: 'fa-coffee', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Premium coffee shop'},
+                {name: 'Burger House', icon: 'fa-hamburger', location: 'Dubai', sellerType: 'Normal', description: 'Classic burgers'},
+                {name: 'Desert Spice Kitchen', icon: 'fa-utensils', location: 'Ajman', sellerType: 'Verified', description: 'Middle Eastern food'}
+            ]},
+            2: { file: '../clients/education/schools/index.html', companies: [
+                {name: 'Emirates International School', icon: 'fa-graduation-cap', location: 'Dubai', sellerType: 'Premium', description: 'International school'},
+                {name: 'Future Leaders Academy', icon: 'fa-book-open', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Educational excellence'},
+                {name: 'Horizon International School', icon: 'fa-star', location: 'Dubai', sellerType: 'Premium', description: 'IB & Cambridge'},
+                {name: 'Sunrise Academy International', icon: 'fa-sun', location: 'Sharjah', sellerType: 'Verified', description: 'American curriculum'},
+                {name: 'Sterling Academy', icon: 'fa-star', location: 'Dubai', sellerType: 'Premium', description: 'Cambridge IGCSE'},
+                {name: 'Innovation Academy Dubai', icon: 'fa-lightbulb', location: 'Dubai', sellerType: 'Verified', description: 'Coding & Robotics'},
+                {name: 'Eco-Vision International', icon: 'fa-leaf', location: 'Ajman', sellerType: 'Premium', description: 'Sustainability focus'},
+                {name: 'Al Noor School', icon: 'fa-book', location: 'Abu Dhabi', sellerType: 'Normal', description: 'Arabic education'},
+                {name: 'Global Minds Academy', icon: 'fa-globe', location: 'Dubai', sellerType: 'Verified', description: 'Multilingual curriculum'},
+                {name: 'Tech Academy School', icon: 'fa-laptop', location: 'Sharjah', sellerType: 'Premium', description: 'Technology focused'},
+                {name: 'Arts & Science School', icon: 'fa-palette', location: 'Dubai', sellerType: 'Normal', description: 'STEAM education'}
+            ]},
+            3: { file: '../clients/health/hospitals/index.html', companies: [
+                {name: 'Emirates General Hospital', icon: 'fa-hospital', location: 'Dubai', sellerType: 'Premium', description: 'Multi-specialty hospital'},
+                {name: 'Care Plus Medical Center', icon: 'fa-heartbeat', location: 'Abu Dhabi', sellerType: 'Verified', description: 'General medical services'},
+                {name: 'Vision Excellence Eye Center', icon: 'fa-eye', location: 'Dubai', sellerType: 'Verified', description: 'Eye care specialists'},
+                {name: 'Neurology & Brain Center', icon: 'fa-brain', location: 'Abu Dhabi', sellerType: 'Premium', description: 'Neurosurgery'},
+                {name: 'Orthopedic Sports Center', icon: 'fa-dumbbell', location: 'Sharjah', sellerType: 'Verified', description: 'Sports medicine'},
+                {name: 'Respiratory Health Institute', icon: 'fa-lungs', location: 'Dubai', sellerType: 'Premium', description: 'Sleep disorders'},
+                {name: 'WellCare Specialty Clinic', icon: 'fa-clinic-medical', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Specialty care'},
+                {name: 'Cardiac Care Center', icon: 'fa-heart', location: 'Dubai', sellerType: 'Premium', description: 'Cardiology'},
+                {name: 'Maternity & Pediatric', icon: 'fa-baby', location: 'Sharjah', sellerType: 'Verified', description: 'Women & child health'},
+                {name: 'Gastro Health Clinic', icon: 'fa-stethoscope', location: 'Abu Dhabi', sellerType: 'Normal', description: 'Digestive health'},
+                {name: 'Dermatology & Beauty', icon: 'fa-spa', location: 'Dubai', sellerType: 'Premium', description: 'Skin care specialists'}
+            ]},
+            4: { file: '../clients/industries/manufacturing/index.html', companies: [
+                {name: 'Emirates Steel Manufacturing', icon: 'fa-industry', location: 'Abu Dhabi', sellerType: 'Premium', description: 'Steel fabrication'},
+                {name: 'Gulf Machinery Components', icon: 'fa-cogs', location: 'Dubai', sellerType: 'Verified', description: 'Machinery parts'},
+                {name: 'Plastic & Packaging', icon: 'fa-cube', location: 'Sharjah', sellerType: 'Premium', description: 'Packaging solutions'},
+                {name: 'Industrial Tools', icon: 'fa-hammer', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Industrial tools'},
+                {name: 'Electronics Manufacturing', icon: 'fa-microchip', location: 'Dubai', sellerType: 'Premium', description: 'Electronics components'},
+                {name: 'Food Processing Manufacturing', icon: 'fa-industry', location: 'Sharjah', sellerType: 'Verified', description: 'Food equipment'},
+                {name: 'Chemical & Paint Manufacturing', icon: 'fa-flask', location: 'Abu Dhabi', sellerType: 'Premium', description: 'Chemical products'},
+                {name: 'Textile Manufacturing', icon: 'fa-shirt', location: 'Dubai', sellerType: 'Verified', description: 'Textile production'},
+                {name: 'Auto Parts Manufacturing', icon: 'fa-car', location: 'Ajman', sellerType: 'Premium', description: 'Auto components'},
+                {name: 'Ceramic & Glass Manufacturing', icon: 'fa-glass-martini', location: 'Sharjah', sellerType: 'Verified', description: 'Glass products'},
+                {name: 'Green Manufacturing Co', icon: 'fa-leaf', location: 'Dubai', sellerType: 'Premium', description: 'Eco-friendly production'}
+            ]},
+            5: { file: '../clients/it/software/index.html', companies: [
+                {name: 'TechVision Solutions', icon: 'fa-laptop-code', location: 'Dubai', sellerType: 'Premium', description: 'Software development'},
+                {name: 'CloudNet Systems', icon: 'fa-cloud', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Cloud services'},
+                {name: 'Digital Transform Co', icon: 'fa-mobile-alt', location: 'Sharjah', sellerType: 'Normal', description: 'Mobile apps'},
+                {name: 'Web Solutions Pro', icon: 'fa-globe', location: 'Dubai', sellerType: 'Premium', description: 'Web development'},
+                {name: 'Cyber Security Experts', icon: 'fa-shield', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Security solutions'},
+                {name: 'Innovation Labs UAE', icon: 'fa-lightbulb', location: 'Dubai', sellerType: 'Normal', description: 'R&D services'},
+                {name: 'Creative Design Studio', icon: 'fa-palette', location: 'Sharjah', sellerType: 'Verified', description: 'UI/UX Design'},
+                {name: 'QA Testing Excellence', icon: 'fa-check-circle', location: 'Abu Dhabi', sellerType: 'Premium', description: 'Automated Testing'},
+                {name: 'DevOps Solutions Inc', icon: 'fa-code', location: 'Dubai', sellerType: 'Verified', description: 'CI/CD Pipelines'},
+                {name: 'XR Development Studio', icon: 'fa-vr-cardboard', location: 'Dubai', sellerType: 'Premium', description: 'AR/VR Apps'},
+                {name: 'Business Automation Pro', icon: 'fa-robot', location: 'Abu Dhabi', sellerType: 'Verified', description: 'RPA Solutions'}
+            ]},
+            6: { file: '../clients/media-entertainment/production/index.html', companies: [
+                {name: 'Prime Vision Studios', icon: 'fa-video', location: 'Dubai', sellerType: 'Premium', description: '4K video production'},
+                {name: 'Creative Lens Production', icon: 'fa-camera', location: 'Sharjah', sellerType: 'Verified', description: 'Events/weddings'},
+                {name: 'Audio & Podcast Studios', icon: 'fa-headphones', location: 'Abu Dhabi', sellerType: 'Premium', description: 'Podcast production'},
+                {name: 'Motion Graphics Studio', icon: 'fa-film', location: 'Dubai', sellerType: 'Verified', description: 'Animation/VFX'},
+                {name: 'Broadcasting Solutions', icon: 'fa-broadcast-tower', location: 'Abu Dhabi', sellerType: 'Premium', description: 'Live streaming'},
+                {name: 'Professional Photography', icon: 'fa-camera', location: 'Dubai', sellerType: 'Verified', description: 'Commercial photography'},
+                {name: 'Music Production House', icon: 'fa-music', location: 'Sharjah', sellerType: 'Premium', description: 'Music recording'},
+                {name: 'Content Creation Agency', icon: 'fa-pen', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Digital/social'},
+                {name: 'Video Editing Pro', icon: 'fa-cut', location: 'Dubai', sellerType: 'Premium', description: 'Editing/grading'},
+                {name: 'Drone Media Services', icon: 'fa-helicopter', location: 'Sharjah', sellerType: 'Verified', description: 'Aerial filming'},
+                {name: 'Streaming Media Lab', icon: 'fa-stream', location: 'Abu Dhabi', sellerType: 'Normal', description: 'Online streaming'}
+            ]},
+            7: { file: '../clients/real-estate/residential/index.html', companies: [
+                {name: 'Luxury Homes Emirates', icon: 'fa-home', location: 'Dubai', sellerType: 'Premium', description: 'Villas/apartments'},
+                {name: 'Downtown Developments', icon: 'fa-building', location: 'Dubai', sellerType: 'Verified', description: 'Central Dubai'},
+                {name: 'Gated Community Living', icon: 'fa-gated-community', location: 'Abu Dhabi', sellerType: 'Premium', description: 'Arabian Ranches'},
+                {name: 'Beachfront Properties', icon: 'fa-water', location: 'Dubai', sellerType: 'Verified', description: 'Jumeirah'},
+                {name: 'Dubai Hills Estate', icon: 'fa-mountain', location: 'Dubai', sellerType: 'Premium', description: 'Golf community'},
+                {name: 'New Development Projects', icon: 'fa-hard-hat', location: 'Sharjah', sellerType: 'Verified', description: 'Flexible payment'},
+                {name: 'Residential Broker Services', icon: 'fa-handshake', location: 'Abu Dhabi', sellerType: 'Premium', description: 'Buy/sell/rent'},
+                {name: 'Property Valuation Services', icon: 'fa-calculator', location: 'Dubai', sellerType: 'Verified', description: 'Appraisals'},
+                {name: 'Rental Management Company', icon: 'fa-key', location: 'Sharjah', sellerType: 'Premium', description: 'Management'},
+                {name: 'Legal Real Estate Services', icon: 'fa-file-contract', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Documentation'},
+                {name: 'Luxury Concierge', icon: 'fa-concierge-bell', location: 'Dubai', sellerType: 'Premium', description: 'VIP services'}
+            ]},
+            8: { file: '../clients/travel/tours/index.html', companies: [
+                {name: 'Premium Travel Adventures', icon: 'fa-map', location: 'Dubai', sellerType: 'Premium', description: 'Luxury tours'},
+                {name: 'Adventure & Trekking', icon: 'fa-mountain', location: 'Sharjah', sellerType: 'Verified', description: 'Adventure tours'},
+                {name: 'Cruise & Marine Tours', icon: 'fa-ship', location: 'Dubai', sellerType: 'Premium', description: 'Marine tours'},
+                {name: 'Cultural Heritage Tours', icon: 'fa-mosque', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Heritage tours'},
+                {name: 'Desert Safari Experience', icon: 'fa-desert', location: 'Dubai', sellerType: 'Premium', description: 'Safari tours'},
+                {name: 'City Tours & Sightseeing', icon: 'fa-city', location: 'Dubai', sellerType: 'Verified', description: 'City tours'},
+                {name: 'Self-Drive Tours', icon: 'fa-car', location: 'Abu Dhabi', sellerType: 'Premium', description: 'Vehicle rental'},
+                {name: 'Wildlife & Nature Tours', icon: 'fa-binoculars', location: 'Sharjah', sellerType: 'Verified', description: 'Wildlife tours'},
+                {name: 'Concierge Travel Services', icon: 'fa-concierge-bell', location: 'Dubai', sellerType: 'Premium', description: 'Personalized'},
+                {name: 'Adventure Sports Tours', icon: 'fa-dumbbell', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Sports tours'},
+                {name: 'Luxury Yacht Charters', icon: 'fa-sailboat', location: 'Dubai', sellerType: 'Premium', description: 'Yacht services'}
+            ]},
+            9: { file: '../clients/miscellaneous/cleaning/index.html', companies: [
+                {name: 'Deluxe Home Cleaning', icon: 'fa-home', location: 'Dubai', sellerType: 'Premium', description: 'Home cleaning'},
+                {name: 'Commercial Office Cleaning', icon: 'fa-building', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Office cleaning'},
+                {name: 'Window & Facade Cleaning', icon: 'fa-window', location: 'Dubai', sellerType: 'Premium', description: 'High-rise'},
+                {name: 'Carpet & Upholstery Care', icon: 'fa-rug', location: 'Sharjah', sellerType: 'Verified', description: 'Carpet cleaning'},
+                {name: 'Deep Kitchen Cleaning', icon: 'fa-kitchen-set', location: 'Dubai', sellerType: 'Premium', description: 'Kitchen cleaning'},
+                {name: 'Waste Management', icon: 'fa-trash-can', location: 'Abu Dhabi', sellerType: 'Verified', description: 'Waste disposal'},
+                {name: 'Sanitization Service', icon: 'fa-bathroom', location: 'Dubai', sellerType: 'Premium', description: 'Disinfection'},
+                {name: 'Retail Space Cleaning', icon: 'fa-store', location: 'Sharjah', sellerType: 'Verified', description: 'Mall cleaning'},
+                {name: 'Industrial Site Cleaning', icon: 'fa-building-shield', location: 'Abu Dhabi', sellerType: 'Premium', description: 'Industrial cleaning'},
+                {name: 'Pool & Spa Cleaning', icon: 'fa-water', location: 'Dubai', sellerType: 'Verified', description: 'Pool maintenance'},
+                {name: 'Green Eco Cleaning', icon: 'fa-leaf', location: 'Ajman', sellerType: 'Premium', description: 'Eco-friendly'}
+            ]}
+        };
+
+        // Load company profiles for selected category
+        function loadCompanyProfiles(categoryId) {
+            const profileData = companyProfilesData[categoryId];
+            if (!profileData || !profileData.companies) {
+                document.getElementById('categoryFeaturedCompanies').innerHTML = '<div class="text-gray-500 text-sm">No featured companies for this category yet.</div>';
+                return;
+            }
+
+            const companies = profileData.companies;
+            const colors = [
+                'from-purple-500 to-indigo-600',
+                'from-blue-500 to-cyan-600',
+                'from-green-500 to-emerald-600',
+                'from-orange-500 to-red-600',
+                'from-pink-500 to-rose-600',
+                'from-yellow-500 to-amber-600'
+            ];
+
+            let featuredHtml = '';
+            companies.forEach((company, index) => {
+                const colorClass = colors[index % colors.length];
+                const isPremium = company.sellerType === 'Premium';
+                const cardClass = isPremium ? 'glass-card overflow-hidden hover:shadow-xl transition-all card-hover animate-fadeIn company-profile-card company-card-small premium-border' : 'glass-card overflow-hidden hover:shadow-xl transition-all card-hover animate-fadeIn company-profile-card company-card-small';
+                featuredHtml += `
+                    <div class="${cardClass}" data-company-name="${company.name.toLowerCase()}" data-location="${company.location}" data-seller-type="${company.sellerType || 'Normal'}">
+                        <div class="bg-gradient-to-br ${colorClass} p-4">
+                            <div class="flex items-start justify-between mb-2">
+                                <i class="fas ${company.icon} text-2xl text-white"></i>
+                                ${isPremium ? '<span class="px-1.5 py-0.5 text-xs rounded-full premium-badge font-bold"><i class="fas fa-crown mr-0.5"></i>Premium</span>' : (company.verified ? '<span class="px-1.5 py-0.5 text-xs rounded-full bg-white bg-opacity-30 text-white"><i class="fas fa-check-circle mr-0.5"></i>Verified</span>' : `<span class="px-1.5 py-0.5 text-xs rounded-full bg-white bg-opacity-30 text-white">${company.sellerType || 'Normal'}</span>`)}
+                            </div>
+                            <h3 class="text-sm font-bold text-white mb-0.5">${company.name}</h3>
+                            <p class="text-white text-opacity-90 text-xs"><i class="fas fa-map-marker-alt mr-0.5"></i>${company.location}</p>
+                        </div>
+                        <div class="p-3">
+                            <p class="text-gray-600 mb-2 text-xs line-clamp-2">${company.description}</p>
+                            <button onclick="window.location.href='company-profile.html?name=${encodeURIComponent(company.name)}&category=${categoryId}'" class="w-full bg-purple-600 hover:bg-purple-700 text-white py-1.5 rounded-lg font-semibold transition-colors text-xs">
+                                <i class="fas fa-eye mr-1"></i>View Profile
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('categoryFeaturedCompanies').innerHTML = featuredHtml;
+            applyFilters();
+        }
+
+        // Filter company profiles (header search)
+        function filterCompanyProfiles() {
+            const searchInputEl = document.getElementById('headerSearchInput');
+            if (!searchInputEl) return;
+            const searchInput = searchInputEl.value.toLowerCase().trim();
+            const companyCards = document.querySelectorAll('.company-profile-card');
+            companyCards.forEach(card => {
+                const companyName = card.getAttribute('data-company-name');
+                card.style.display = companyName.includes(searchInput) ? '' : 'none';
+            });
+        }
+
+        // Apply filters for companies
+        function applyFilters() {
+            const locationFilter = document.getElementById('selectedLocationFilter')?.value || document.getElementById('locationFilter')?.value || '';
+            const sellerTypeFilter = document.getElementById('selectedSellerTypeFilter')?.value || document.getElementById('sellerTypeFilter')?.value || '';
+            const companyCards = document.querySelectorAll('#categoryFeaturedCompanies .company-profile-card');
+
+            companyCards.forEach(card => {
+                const location = card.getAttribute('data-location') || '';
+                const sellerType = card.getAttribute('data-seller-type') || 'Normal';
+                let show = true;
+
+                if (locationFilter && location !== locationFilter) show = false;
+                if (sellerTypeFilter && sellerType !== sellerTypeFilter) show = false;
+
+                card.style.display = show ? '' : 'none';
+            });
+        }
+
+        // Load categories into dropdown
+        function loadCategoriesDropdown() {
+            const categories = JSON.parse(localStorage.getItem('categories') || '[]');
+            const activeCategories = categories.filter(cat => cat.status === 'active').sort((a, b) => a.displayOrder - b.displayOrder);
+            
+            let html = `
+                <a href="categories.html" class="flex items-center gap-3 px-4 py-3 hover:bg-purple-50 transition border-b border-gray-100">
+                    <i class="fas fa-list text-purple-600 text-lg w-6"></i>
+                    <span class="font-semibold text-gray-800">All Categories</span>
+                </a>
+            `;
+            
+            activeCategories.forEach(cat => {
+                const subcats = cat.subcategories ? cat.subcategories.split(',').slice(0, 3) : [];
+                html += `
+                    <div class="border-b border-gray-100 hover:bg-purple-50 transition">
+                        <a href="categories.html?cat=${cat.id}" class="flex items-center gap-3 px-4 py-3">
+                            <i class="fas ${cat.icon} text-purple-600 text-lg w-6"></i>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-800">${cat.name}</div>
+                                <div class="text-xs text-gray-500">${cat.totalProducts?.toLocaleString() || 0}+ items</div>
+                            </div>
+                        </a>
+                        ${subcats.length > 0 ? `
+                            <div class="px-4 pb-2 text-xs text-gray-600 flex flex-wrap gap-1">
+                                ${subcats.map(sub => `<span class="bg-gray-100 px-2 py-1 rounded">${sub.trim()}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+            
+            const dropdown = document.getElementById('categoriesDropdown');
+            if (dropdown) dropdown.innerHTML = html;
+        }
+
+        // Toggle categories dropdown
+        function toggleCategories() {
+            const dropdown = document.getElementById('categoriesDropdown');
+            if (dropdown) dropdown.classList.toggle('hidden');
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('categoriesDropdown');
+            if (!dropdown) return;
+            const categoriesButton = event.target.closest('button[onclick="toggleCategories()"]');
+            if (!categoriesButton && !dropdown.classList.contains('hidden')) {
+                const clickedInsideDropdown = dropdown.contains(event.target);
+                if (!clickedInsideDropdown) dropdown.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

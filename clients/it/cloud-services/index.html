@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Services - UAE Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between gap-4">
+                <a href="../../html-pages/index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-store text-3xl text-purple-600"></i>
+                    <span class="text-2xl font-bold">UAE Mart</span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-4">
+                    <a href="../../html-pages/categories.html" class="text-gray-700 hover:text-purple-600 transition">All Categories</a>
+                    <a href="../../html-pages/login.html" class="text-gray-700 hover:text-purple-600 transition">Login</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2 animate-fadeIn">
+                <i class="fas fa-cloud mr-3 text-blue-600"></i>Cloud Services
+            </h1>
+            <p class="text-xl text-gray-600 animate-fadeIn">Enterprise cloud infrastructure and solutions providers</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cloud 1 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-blue-500 to-cyan-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-cloud mr-1 text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">AWS Cloud Solutions</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Amazon Web Services consulting and managed services. EC2, S3, RDS, Lambda, and advanced cloud architecture.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>AWS Certified</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-server mr-2 text-blue-600"></i>24/7 Support</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Cloud 2 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-cyan-600 to-blue-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-database text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Microsoft Azure Services</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Azure cloud platform services. Virtual machines, databases, analytics, and enterprise integration solutions.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Azure Certified</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-database mr-2 text-blue-600"></i>DB Services</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Cloud 3 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-purple-600 to-indigo-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-google text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Google Cloud Platform</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">GCP managed services. BigQuery, Compute Engine, App Engine, and machine learning platform services.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>GCP Expert</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-brain mr-2 text-blue-600"></i>ML Services</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Cloud 4 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-teal-600 to-cyan-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-lock text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Secure Cloud Infrastructure</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Sharjah</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Secure private cloud and hybrid cloud solutions. Compliance, encryption, and disaster recovery services.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Compliant</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-lock mr-2 text-blue-600"></i>Security Focus</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Cloud 5 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-green-600 to-emerald-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-chart-line text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Cloud Analytics Platform</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Data analytics and BI solutions on cloud. Real-time dashboards, data warehousing, and predictive analytics.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Analytics Expert</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-chart-bar mr-2 text-blue-600"></i>BI Services</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Cloud 6 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-orange-600 to-red-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-exchange-alt text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Cloud Migration Services</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Enterprise cloud migration. Data migration, application lift and shift, and legacy system modernization.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Migration Experts</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-exchange-alt mr-2 text-blue-600"></i>Zero Downtime</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Cloud 7 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-indigo-600 to-purple-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-cube text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Container & Kubernetes Solutions</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Docker and Kubernetes container orchestration. Microservices architecture, container registry, and deployment.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>K8s Expert</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-cube mr-2 text-blue-600"></i>Container Focus</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Cloud 8 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-pink-600 to-rose-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-network-wired text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Cloud Networking Expert</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Cloud networking and connectivity solutions. VPN, Direct Connect, load balancing, and CDN services.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Network Expert</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-network-wired mr-2 text-blue-600"></i>High Performance</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Cloud 9 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-cyan-600 to-teal-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-shield-alt text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Cloud Security Solutions</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Cloud security and compliance. Identity management, DLP, threat detection, and security audits.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Security Certified</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-shield-alt mr-2 text-blue-600"></i>24/7 Monitoring</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Cloud 10 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-blue-600 to-indigo-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-cogs text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Cloud Optimization Services</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Sharjah</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Cloud cost optimization and performance tuning. Resource monitoring, capacity planning, and savings programs.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Cost Optimization</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-chart-line mr-2 text-blue-600"></i>ROI Focused</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Cloud 11 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-green-600 to-teal-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-rocket text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Cloud DevOps Services</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">DevOps automation and CI/CD pipeline services. Infrastructure as code, continuous deployment, and monitoring.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>DevOps Expert</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-rocket mr-2 text-blue-600"></i>Fast Deployment</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-purple-600 to-blue-600 text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center opacity-90">
+                <p>&copy; 2024 UAE Mart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Centers - UAE Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between gap-4">
+                <a href="../../html-pages/index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-store text-3xl text-purple-600"></i>
+                    <span class="text-2xl font-bold">UAE Mart</span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-4">
+                    <a href="../../html-pages/categories.html" class="text-gray-700 hover:text-purple-600 transition">All Categories</a>
+                    <a href="../../html-pages/login.html" class="text-gray-700 hover:text-purple-600 transition">Login</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2 animate-fadeIn">
+                <i class="fas fa-chalkboard-user mr-3 text-blue-600"></i>Training Centers
+            </h1>
+            <p class="text-xl text-gray-600 animate-fadeIn">Professional training and skill development institutes across UAE</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Training Center 1 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-blue-500 to-cyan-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-laptop text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Tech Academy Pro</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Leading IT and programming training center. Courses in Python, Java, Web Development, Cloud Computing, and Data Science.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Certification Programs</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-laptop mr-2 text-blue-600"></i>Hands-On Training</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Training Center 2 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-purple-600 to-indigo-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-briefcase text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Business Skills Institute</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Professional business and management training. MBA prep, leadership, project management, and business communication courses.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>MBA Preparation</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-star mr-2 text-blue-600"></i>Leadership Training</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Training Center 3 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-orange-600 to-red-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-language text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Language Academy Plus</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai Marina</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">English, Arabic, and other language courses. TOEFL, IELTS, and business communication training available.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>TOEFL/IELTS</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-globe mr-2 text-blue-600"></i>Multilingual Programs</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Training Center 4 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-green-600 to-emerald-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-wrench text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Skilled Trades Academy</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Sharjah</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Vocational training in plumbing, electrical, carpentry, and HVAC. Hands-on practical experience with certification.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Vocational Certs</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-tools mr-2 text-blue-600"></i>Practical Training</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Training Center 5 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-pink-600 to-rose-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-dumbbell text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Fitness & Wellness Institute</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Fitness certification programs. Personal training, yoga instruction, and wellness coaching certification courses.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Fitness Certs</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-dumbbell mr-2 text-blue-600"></i>Wellness Training</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Training Center 6 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-teal-600 to-cyan-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-camera text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Creative Media Academy</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Photography, videography, graphic design, and digital marketing training. Industry-standard equipment and mentorship.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Portfolio Building</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-camera mr-2 text-blue-600"></i>Media Training</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Training Center 7 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-indigo-600 to-purple-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-chart-line text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Finance & Investment Academy</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Financial analysis, investment strategies, and accounting courses. CFA and financial certification prep programs.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>CFA Prep</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-chart-line mr-2 text-blue-600"></i>Investment Training</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Training Center 8 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-cyan-600 to-blue-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-shield-alt text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Safety & Security Institute</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Sharjah</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Workplace safety, fire safety, and security training. OSHA compliance and risk management certification courses.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Safety Certs</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-shield-alt mr-2 text-blue-600"></i>OSHA Compliance</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Training Center 9 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-green-600 to-teal-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-leaf text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Sustainability Training Center</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Environmental management and sustainability courses. Green building, renewable energy, and CSR training programs.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Green Certs</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-leaf mr-2 text-blue-600"></i>Sustainability</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Training Center 10 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-rose-600 to-pink-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-heart text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Healthcare Training Academy</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Healthcare professional courses. Nursing, medical assistant, and health care management certification programs.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Healthcare Certs</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-heart mr-2 text-blue-600"></i>Medical Training</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Training Center 11 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-blue-600 to-indigo-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-gavel text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Legal & Compliance Academy</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Legal training and compliance courses. Corporate law, HR compliance, and regulatory training programs.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Legal Certs</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-gavel mr-2 text-blue-600"></i>Compliance Training</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-purple-600 to-blue-600 text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center opacity-90">
+                <p>&copy; 2024 UAE Mart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

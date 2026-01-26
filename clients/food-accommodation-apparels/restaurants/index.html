@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurants & Catering - UAE Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between gap-4">
+                <a href="../../html-pages/index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-store text-3xl text-purple-600"></i>
+                    <span class="text-2xl font-bold">UAE Mart</span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-4">
+                    <a href="../../html-pages/categories.html" class="text-gray-700 hover:text-purple-600 transition">All Categories</a>
+                    <a href="../../html-pages/login.html" class="text-gray-700 hover:text-purple-600 transition">Login</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2 animate-fadeIn">
+                <i class="fas fa-utensils mr-3 text-purple-600"></i>Restaurants & Catering
+            </h1>
+            <p class="text-xl text-gray-600 animate-fadeIn">Premium restaurant and catering services across UAE</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Restaurant 1 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-red-500 to-orange-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-utensils text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Golden Spoon Catering</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Premium corporate and wedding catering services with 15+ years of experience. Specialized in multi-cuisine offerings.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-purple-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-envelope mr-2 text-purple-600"></i>info@goldspoon.ae</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Downtown Dubai, UAE</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Restaurant 2 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-orange-500 to-red-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-fire text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Spice Route Restaurant</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Authentic Indian and Middle Eastern cuisine. Family-friendly restaurant with private dining facilities.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-purple-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-envelope mr-2 text-purple-600"></i>info@spiceroute.ae</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Al Marjan, Abu Dhabi, UAE</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Restaurant 3 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-yellow-500 to-orange-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-drumstick-bite text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Al Reef Bakery</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Sharjah</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Traditional Arabic bakery with fresh daily production. Wholesale and retail services available.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-purple-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-envelope mr-2 text-purple-600"></i>sales@alreef.ae</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Al Majaz, Sharjah, UAE</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Restaurant 4 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-green-500 to-emerald-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-leaf text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Fresh Garden Cafe</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Organic and healthy cuisine cafe. Farm-to-table concept with premium ingredients.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-purple-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-envelope mr-2 text-purple-600"></i>hello@freshgarden.ae</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Business Bay, Dubai, UAE</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Restaurant 5 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-blue-500 to-cyan-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-fish text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Seafood Paradise</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai Marina</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Luxury seafood restaurant with waterfront views. Fine dining experience with premium selection.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-purple-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-envelope mr-2 text-purple-600"></i>reservations@seafoodparadise.ae</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Dubai Marina, UAE</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Restaurant 6 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-purple-500 to-indigo-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-pizza-slice text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Italian Pizza House</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Ajman</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Authentic Italian cuisine with wood-fired pizza oven. Family restaurant with delivery service.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-purple-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-envelope mr-2 text-purple-600"></i>info@pizzahouse.ae</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Al Nakheel, Ajman, UAE</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Restaurant 7 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-amber-600 to-yellow-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-bowl-food text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Thai Spice Kitchen</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Authentic Thai cuisine with traditional recipes. Private dining, catering, and event management services.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-purple-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-envelope mr-2 text-purple-600"></i>info@thaispice.ae</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Jumeirah, Dubai, UAE</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Restaurant 8 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-indigo-600 to-purple-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-drumstick-bite text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">BBQ Master Grill</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Premium BBQ and grilled meat specialist. International quality with local flavors. Corporate events welcome.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-purple-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-envelope mr-2 text-purple-600"></i>reservations@bbqmaster.ae</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Al Manara, Abu Dhabi, UAE</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Restaurant 9 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-red-600 to-orange-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-noodles text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Dragon Palace Chinese</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Sharjah</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Authentic Chinese cuisine with wok specialties. Family-owned for 15 years. Delivery and dine-in available.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-purple-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-envelope mr-2 text-purple-600"></i>info@dragonpalace.ae</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Al Tawar, Sharjah, UAE</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Restaurant 10 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-teal-500 to-cyan-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-utensils text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Levant Mezze House</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Mediterranean and Middle Eastern mezze specialist. Wine selection available. Prime location with terrace seating.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-purple-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-envelope mr-2 text-purple-600"></i>info@levantmezze.ae</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>DIFC, Dubai, UAE</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Restaurant 11 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-rose-500 to-red-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-cheese text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Cheese & Wine Bistro</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">European cheese and wine selection with light cuisine. Romantic ambiance for special occasions.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-purple-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-envelope mr-2 text-purple-600"></i>reservations@cheesewine.ae</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-map-marker-alt mr-2 text-purple-600"></i>Al Marjan, Abu Dhabi, UAE</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-purple-600 to-blue-600 text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center opacity-90">
+                <p>&copy; 2024 UAE Mart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

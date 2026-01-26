@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buyer Details - UAE Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+    </style>
+</head>
+<body>
+    <header class="glass-card mx-4 my-4 p-4">
+        <div class="container mx-auto">
+            <a href="index.html" class="flex items-center space-x-2 animate-fadeIn">
+                <i class="fas fa-store text-3xl text-purple-600"></i>
+                <span class="text-2xl font-bold text-purple-600">UAE Mart</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <a href="index.html" class="inline-flex items-center gap-2 text-white hover:text-gray-200 mb-4">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+            <div class="text-center mt-4">
+                <h1 class="text-5xl font-bold text-white mb-4 animate-fadeIn"><i class="fas fa-user-tie mr-3"></i>Buyer Details</h1>
+                <p class="text-xl text-white/90 max-w-2xl mx-auto animate-fadeIn">
+                    Complete your buyer profile to connect with the best suppliers in the UAE
+                </p>
+            </div>
+        </div>
+
+        <form class="max-w-4xl mx-auto space-y-8" id="buyerForm" onsubmit="return handleBuyerSubmit(event);">
+            <!-- Personal Information -->
+            <div class="glass-card p-8 animate-fadeIn">
+                <h2 class="text-3xl font-bold text-purple-600 mb-6"><i class="fas fa-user mr-2"></i>Personal Information</h2>
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Buyer Type *</label>
+                    <select name="buyer_type" required class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" onchange="toggleBuyerType(this.value)">
+                        <option value="">Select buyer type</option>
+                        <option value="Business">Business</option>
+                        <option value="Individual">Individual</option>
+                    </select>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2"><i class="fas fa-user mr-2"></i>First Name *</label>
+                        <input type="text" name="full_name" required class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2"><i class="fas fa-user mr-2"></i>Last Name</label>
+                        <input type="text" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2"><i class="fas fa-envelope mr-2"></i>Email Address *</label>
+                        <input type="email" name="email" required class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2"><i class="fas fa-phone mr-2"></i>Phone Number *</label>
+                        <input type="tel" name="mobile_number" required class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="+971-XX-XXX-XXXX">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Company Information -->
+            <div class="glass-card p-8 animate-fadeIn" id="companySection">
+                <h2 class="text-3xl font-bold text-purple-600 mb-6"><i class="fas fa-building mr-2"></i>Company Information</h2>
+                <div class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Company Name <span id="companyRequired">*</span></label>
+                            <input type="text" name="business_name" id="companyName" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Company Type</label>
+                            <select name="business_type" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">Select company type</option>
+                                <option>LLC</option>
+                                <option>Free Zone</option>
+                                <option>Branch Office</option>
+                                <option>Establishment</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Industry *</label>
+                            <select id="industrySelect" name="industry_sector" required class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">Select your industry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Company Size</label>
+                            <select name="number_of_employees" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">Select company size</option>
+                                <option>1-10 employees</option>
+                                <option>11-50 employees</option>
+                                <option>51-200 employees</option>
+                                <option>201-500 employees</option>
+                                <option>500+ employees</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2"><i class="fas fa-globe mr-2"></i>Company Website</label>
+                        <input type="url" name="website" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="https://www.example.com">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address Information -->
+            <div class="glass-card p-8 animate-fadeIn">
+                <h2 class="text-3xl font-bold text-purple-600 mb-6"><i class="fas fa-map-marker-alt mr-2"></i>Address Information</h2>
+                <div class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Emirate *</label>
+                            <select name="emirate" required class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">Select emirate</option>
+                                <option>Abu Dhabi</option>
+                                <option>Dubai</option>
+                                <option>Sharjah</option>
+                                <option>Ajman</option>
+                                <option>Umm Al-Quwain</option>
+                                <option>Ras Al Khaimah</option>
+                                <option>Fujairah</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">City *</label>
+                            <input type="text" name="city" required class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Street Address *</label>
+                        <textarea name="street_address" required rows="3" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Enter your complete address"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Business Details -->
+            <div class="glass-card p-8 animate-fadeIn">
+                <h2 class="text-3xl font-bold text-purple-600 mb-6"><i class="fas fa-briefcase mr-2"></i>Business Details</h2>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Business Description *</label>
+                        <textarea name="specific_requirements" required rows="4" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="Describe your business and what you do"></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Annual Purchase Volume</label>
+                            <select name="average_order_value" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">Select purchase volume</option>
+                                <option>Under AED 100,000</option>
+                                <option>AED 100,000 - 500,000</option>
+                                <option>AED 500,000 - 1,000,000</option>
+                                <option>AED 1,000,000 - 5,000,000</option>
+                                <option>Over AED 5,000,000</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Preferred Payment Terms</label>
+                            <select name="preferred_payment_method" class="w-full p-3 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                                <option value="">Select payment terms</option>
+                                <option>Cash on Delivery</option>
+                                <option>Net 15 days</option>
+                                <option>Net 30 days</option>
+                                <option>Net 60 days</option>
+                                <option>Letter of Credit</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documents & KYC Verification -->
+            <div class="glass-card p-8 animate-fadeIn">
+                <h2 class="text-3xl font-bold text-purple-600 mb-6"><i class="fas fa-file-alt mr-2"></i>Documents & KYC Verification</h2>
+                <p class="text-sm text-gray-600 mb-6">Upload required documents for verification (All documents must be valid and clear)</p>
+                
+                <div class="space-y-4">
+                    <!-- Trade License -->
+                    <div class="border-2 border-purple-200 rounded-lg p-6 hover:border-purple-400 transition">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Trade License (For Business Only) <span class="text-xs text-gray-500">(PDF, JPG, PNG - Max 10MB)</span></label>
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                            <input type="file" id="buyer-trade-license" name="trade_license" accept=".pdf,.jpg,.jpeg,.png" class="hidden" onchange="updateFileName(this)">
+                            <label for="buyer-trade-license" class="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg text-sm font-medium transition-all shadow-lg">
+                                <i class="fas fa-upload mr-2"></i>Browse Files
+                            </label>
+                            <span id="buyer-trade-license-name" class="text-sm text-gray-600">No file selected</span>
+                        </div>
+                    </div>
+
+                    <!-- Emirates ID / Passport -->
+                    <div class="border-2 border-purple-200 rounded-lg p-6 hover:border-purple-400 transition">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Emirates ID / Passport * <span class="text-xs text-gray-500">(Required for verification)</span></label>
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                            <input type="file" id="id-document" name="id_document" accept=".pdf,.jpg,.jpeg,.png" class="hidden" onchange="updateFileName(this)">
+                            <label for="id-document" class="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg text-sm font-medium transition-all shadow-lg">
+                                <i class="fas fa-upload mr-2"></i>Browse Files
+                            </label>
+                            <span id="id-document-name" class="text-sm text-gray-600">No file selected</span>
+                        </div>
+                    </div>
+
+                    <!-- Company Profile -->
+                    <div class="border-2 border-purple-200 rounded-lg p-6 hover:border-purple-400 transition">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Company Profile <span class="text-xs text-gray-500">(Optional)</span></label>
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                            <input type="file" id="buyer-company-profile" name="company_profile" accept=".pdf,.doc,.docx" class="hidden" onchange="updateFileName(this)">
+                            <label for="buyer-company-profile" class="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg text-sm font-medium transition-all shadow-lg">
+                                <i class="fas fa-upload mr-2"></i>Browse Files
+                            </label>
+                            <span id="buyer-company-profile-name" class="text-sm text-gray-600">No file selected</span>
+                        </div>
+                    </div>
+
+                    <!-- Purchase Order Sample -->
+                    <div class="border-2 border-purple-200 rounded-lg p-6 hover:border-purple-400 transition">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Purchase Order Sample <span class="text-xs text-gray-500">(Optional)</span></label>
+                        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                            <input type="file" id="po-sample" name="purchase_order_sample" accept=".pdf,.doc,.docx" class="hidden" onchange="updateFileName(this)">
+                            <label for="po-sample" class="cursor-pointer bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-6 py-3 rounded-lg text-sm font-medium transition-all shadow-lg">
+                                <i class="fas fa-upload mr-2"></i>Browse Files
+                            </label>
+                            <span id="po-sample-name" class="text-sm text-gray-600">No file selected</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 p-6 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border-2 border-blue-200">
+                    <p class="text-sm text-blue-700 mb-2"><i class="fas fa-check-circle mr-2"></i>All documents are securely stored and encrypted</p>
+                    <p class="text-sm text-blue-700 mb-2"><i class="fas fa-check-circle mr-2"></i>Your documents will be reviewed within 24-48 hours</p>
+                    <p class="text-sm text-blue-700"><i class="fas fa-check-circle mr-2"></i>Supported formats: PDF, JPG, PNG, DOC, DOCX (Max 10MB each)</p>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-center pt-6">
+                <button type="submit" class="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-16 py-4 text-xl rounded-lg font-bold transition-all hover:scale-105 shadow-2xl">
+                    <i class="fas fa-check-circle mr-2"></i>Complete Buyer Profile
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <footer class="bg-gradient-to-r from-purple-600 to-blue-600 text-white mt-12">
+        <div class="container mx-auto px-4 py-8 text-center">
+            <p class="opacity-90">© 2024 UAE Mart. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const API_BASE = window.location.protocol === 'file:' ? '' : 'http://localhost:8080/UAEMart/excel-system/api';
+        
+        function toggleBuyerType(type) {
+            const companyName = document.getElementById('companyName');
+            const companyRequired = document.getElementById('companyRequired');
+            if (type === 'Business') {
+                companyName.required = true;
+                companyRequired.style.display = 'inline';
+            } else {
+                companyName.required = false;
+                companyRequired.style.display = 'none';
+            }
+        }
+        
+        // Initialize categories on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            initializeCategories();
+            loadIndustries();
+        });
+
+        // Initialize Categories
+        function initializeCategories() {
+            if (!localStorage.getItem('categories')) {
+                const defaultCategories = [
+                    {id: 1, name: 'Food, Accommodation and Apparels', parentCategory: '', subcategories: 'Veg Restaurants,Non-Veg Restaurants,Hotels,1 Star Hotels,2 Star Hotels,3 Star Hotels,4 Star Hotels,5 Star Hotels,Resorts,Family Hotels,Budget Hotels,Cafes & Bakeries,Catering Services,Food Supplies,Men\'s Clothing,Women\'s Clothing,Kids Clothing,Footwear & Accessories', icon: 'fa-utensils', description: 'Food hospitality and fashion products', totalProducts: 163000, totalSuppliers: 3630, status: 'active', displayOrder: 1, createdAt: '2024-01-01 00:00:00'},
+                    {id: 2, name: 'Education', parentCategory: '', subcategories: 'Schools & Colleges,Training Centers,Online Learning,Educational Materials,Tutoring Services,Language Institutes,Vocational Training', icon: 'fa-graduation-cap', description: 'Educational services and training programs', totalProducts: 38000, totalSuppliers: 760, status: 'active', displayOrder: 2, createdAt: '2024-01-01 00:00:00'},
+                    {id: 3, name: 'Health', parentCategory: '', subcategories: 'Hospitals & Clinics,Pharmacies,Medical Equipment,Healthcare Services,Wellness Centers,Diagnostic Labs,Dental Services', icon: 'fa-heartbeat', description: 'Medical equipment and healthcare supplies', totalProducts: 55000, totalSuppliers: 1120, status: 'active', displayOrder: 3, createdAt: '2024-01-01 00:00:00'},
+                    {id: 4, name: 'Industries', parentCategory: '', subcategories: 'Manufacturing,Construction Materials,Industrial Equipment,Heavy Machinery,Tools & Hardware,Safety Equipment,Raw Materials', icon: 'fa-industry', description: 'Industrial products and services', totalProducts: 300000, totalSuppliers: 6190, status: 'active', displayOrder: 4, createdAt: '2024-01-01 00:00:00'},
+                    {id: 5, name: 'Information Technology', parentCategory: '', subcategories: 'Software Development,IT Consulting,Cloud Services,Cybersecurity,Hardware & Networking,Web Development,Mobile Apps', icon: 'fa-laptop-code', description: 'Software development and IT solutions', totalProducts: 42000, totalSuppliers: 890, status: 'active', displayOrder: 5, createdAt: '2024-01-01 00:00:00'},
+                    {id: 6, name: 'Media and Entertainment', parentCategory: '', subcategories: 'Printing Services,Advertising,Event Management,Photography & Videography,Broadcasting,Digital Marketing,Content Creation', icon: 'fa-film', description: 'Media advertising and entertainment services', totalProducts: 32000, totalSuppliers: 720, status: 'active', displayOrder: 6, createdAt: '2024-01-01 00:00:00'},
+                    {id: 7, name: 'Real Estate', parentCategory: '', subcategories: 'Residential Properties,Commercial Properties,Land & Plots,Property Management,Real Estate Consulting,Interior Design,Furniture & Furnishing', icon: 'fa-building', description: 'Property and real estate related services', totalProducts: 24000, totalSuppliers: 450, status: 'active', displayOrder: 7, createdAt: '2024-01-01 00:00:00'},
+                    {id: 8, name: 'Travel and Tourism', parentCategory: '', subcategories: 'Tour Packages,Travel Agencies,Flight Booking,Hotel Booking,Car Rentals,Visa Services,Tourist Attractions', icon: 'fa-plane', description: 'Travel tourism and transportation services', totalProducts: 45000, totalSuppliers: 980, status: 'active', displayOrder: 8, createdAt: '2024-01-01 00:00:00'},
+                    {id: 9, name: 'Miscellaneous', parentCategory: '', subcategories: 'Cleaning Services,Logistics & Shipping,Automotive Services,Electronics Repair,Pet Services,Beauty & Spa,Financial Services', icon: 'fa-boxes', description: 'Other products and services', totalProducts: 85000, totalSuppliers: 1650, status: 'active', displayOrder: 9, createdAt: '2024-01-01 00:00:00'}
+                ];
+            localStorage.setItem('categories', JSON.stringify(defaultCategories));
+        }
+
+        // Load industries from categories
+        function loadIndustries() {
+            const categories = JSON.parse(localStorage.getItem('categories') || '[]');
+            const activeCategories = categories.filter(cat => cat.status === 'active').sort((a, b) => a.displayOrder - b.displayOrder);
+            
+            const industrySelect = document.getElementById('industrySelect');
+            industrySelect.innerHTML = '<option value="">Select your industry</option>';
+            
+            activeCategories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat.name;
+                option.textContent = cat.name;
+                industrySelect.appendChild(option);
+            });
+        }
+        
+        function handleBuyerSubmit(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('buyerForm');
+            const formData = new FormData(form);
+            
+            // Check uploaded files
+            const tradeLicense = document.getElementById('buyer-trade-license').files.length > 0 ? 'uploaded' : 'not uploaded';
+            const emiratesId = document.getElementById('id-document').files.length > 0 ? 'uploaded' : 'not uploaded';
+            const companyProfile = document.getElementById('buyer-company-profile').files.length > 0 ? 'uploaded' : 'not uploaded';
+            const poSample = document.getElementById('po-sample').files.length > 0 ? 'uploaded' : 'not uploaded';
+            
+            // Offline mode (file://)
+            if (window.location.protocol === 'file:') {
+                const buyers = JSON.parse(localStorage.getItem('buyers') || '[]');
+                const newBuyer = {
+                    id: buyers.length + 1,
+                    businessName: formData.get('business_name') || formData.get('full_name'),
+                    username: formData.get('business_name') || formData.get('full_name'),
+                    email: formData.get('email'),
+                    phone: formData.get('mobile_number'),
+                    location: formData.get('emirate'),
+                    status: 'active',
+                    tradeLicense: tradeLicense,
+                    emiratesId: emiratesId,
+                    companyProfile: companyProfile,
+                    poSample: poSample,
+                    created_at: new Date().toISOString()
+                };
+                buyers.push(newBuyer);
+                localStorage.setItem('buyers', JSON.stringify(buyers));
+                
+                alert('✅ Buyer Registration Successful!\n\nUsername: ' + newBuyer.username + '\nPassword: UAEmart@123\n\nYou can now login with these credentials.');
+                form.reset();
+                document.querySelectorAll('[id$="-name"]').forEach(span => {
+                    span.textContent = 'No file selected';
+                    span.classList.remove('text-green-600', 'font-medium');
+                });
+                
+                setTimeout(() => window.location.href = 'login.html', 2000);
+                return false;
+            }
+            
+            // Online mode with API
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+            
+            fetch(API_BASE + '/register-buyer.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('✅ Buyer Registration Successful!\n\nBuyer ID: ' + data.buyer_id + '\nUsername: ' + data.username + '\nPassword: UAEmart@123\n\nYour account is pending verification.');
+                    form.reset();
+                    document.querySelectorAll('[id$="-name"]').forEach(span => {
+                        span.textContent = 'No file selected';
+                        span.classList.remove('text-green-600', 'font-medium');
+                    });
+                    setTimeout(() => window.location.href = 'login.html', 2000);
+                } else {
+                    alert('❌ Error: ' + (data.error || 'Registration failed. Please try again.'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('❌ An error occurred. Please check your connection and try again.');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-check-circle mr-2"></i>Complete Buyer Profile';
+            });
+            
+            return false;
+        }
+        
+        function updateFileName(input) {
+            const fileNameSpan = document.getElementById(input.id + '-name');
+            if (input.files && input.files.length > 0) {
+                const file = input.files[0];
+                const fileName = file.name;
+                const fileSize = (file.size / 1024 / 1024).toFixed(2);
+                
+                if (file.size > 10 * 1024 * 1024) {
+                    alert('⚠️ File size exceeds 10MB limit. Please select a smaller file.');
+                    input.value = '';
+                    fileNameSpan.textContent = 'No file selected';
+                    fileNameSpan.classList.remove('text-green-600', 'font-medium');
+                    return;
+                }
+                
+                fileNameSpan.textContent = '✓ ' + fileName + ' (' + fileSize + ' MB)';
+                fileNameSpan.classList.add('text-green-600', 'font-medium');
+            } else {
+                fileNameSpan.textContent = 'No file selected';
+                fileNameSpan.classList.remove('text-green-600', 'font-medium');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitals & Clinics - UAE Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between gap-4">
+                <a href="../../html-pages/index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-store text-3xl text-purple-600"></i>
+                    <span class="text-2xl font-bold">UAE Mart</span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-4">
+                    <a href="../../html-pages/categories.html" class="text-gray-700 hover:text-purple-600 transition">All Categories</a>
+                    <a href="../../html-pages/login.html" class="text-gray-700 hover:text-purple-600 transition">Login</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2 animate-fadeIn">
+                <i class="fas fa-hospital mr-3 text-red-600"></i>Hospitals & Clinics
+            </h1>
+            <p class="text-xl text-gray-600 animate-fadeIn">Leading healthcare facilities and medical services across UAE</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Hospital 1 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-red-500 to-pink-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-hospital text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">MediCare Solutions</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Multi-specialty medical facility with 150+ beds, advanced diagnostic equipment, and 24/7 emergency services. JCI accredited.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-red-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Emergency 24/7</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-users mr-2 text-purple-600"></i>50+ specialist doctors</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Hospital 2 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-red-600 to-rose-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-clinic-medical text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Al Noor Medical Center</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Comprehensive healthcare facility offering primary care, diagnostics, and specialized treatments. Patient-centric approach.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-red-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>All Insurance Accepted</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-clock mr-2 text-purple-600"></i>7am - 10pm Daily</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Hospital 3 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-orange-500 to-red-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-heart text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Cardiac Care Institute</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Specialized cardiac and cardiovascular center with state-of-the-art equipment. International board-certified cardiologists.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-red-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>ICU 24/7 Monitoring</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-heartbeat mr-2 text-purple-600"></i>Cardiology Specialists</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Hospital 4 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-pink-500 to-rose-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-baby text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Maternity & Pediatric Center</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Sharjah</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Dedicated women's and children's healthcare facility with labor rooms, NICU, and pediatric departments. Compassionate care.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-red-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>NICU & Labor Room</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-stethoscope mr-2 text-purple-600"></i>OB/GYN Specialists</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Hospital 5 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-blue-600 to-cyan-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-tooth text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Smile Dental Clinic</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai Marina</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Modern dental clinic with cosmetic, restorative, and implant services. Latest technology and pain-free procedures.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-red-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Cosmetic & Implants</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-tooth mr-2 text-purple-600"></i>Orthodontics Available</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Hospital 6 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-purple-600 to-indigo-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-flask text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">HealthTech Diagnostics</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Advanced diagnostic laboratory with cutting-edge equipment. Quick results, home sample collection service available.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-red-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Home Sample Collection</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-flask mr-2 text-purple-600"></i>Lab Tests & Imaging</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Hospital 7 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-cyan-600 to-blue-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-eye text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Vision Excellence Eye Center</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Specialized eye hospital with laser surgery and corneal services. Experienced ophthalmologists and latest technology.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-red-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>LASIK & Corneal Surgery</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-eye mr-2 text-purple-600"></i>Comprehensive Care</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Hospital 8 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-orange-600 to-red-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-brain text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Neurology & Brain Center</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Specialized neurological center with brain imaging and neurosurgery. Top neurosurgeons and neurologists on staff.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-red-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Neurosurgery Available</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-brain mr-2 text-purple-600"></i>Advanced Brain Imaging</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Hospital 9 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-teal-600 to-cyan-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-dumbbell text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Orthopedic Sports Center</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Sharjah</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Specialized orthopedic and sports medicine center. Rehabilitation and physiotherapy services. Athlete-focused care.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-red-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Sports Medicine</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-dumbbell mr-2 text-purple-600"></i>Rehabilitation Services</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Hospital 10 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-green-600 to-emerald-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-lungs text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Respiratory Health Institute</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Specialized respiratory and pulmonology center. Sleep disorder clinic and advanced breathing therapies available.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-red-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Sleep Disorders Clinic</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-lungs mr-2 text-purple-600"></i>Pulmonology Services</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- Hospital 11 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-pink-600 to-rose-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-pills text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">WellCare Specialty Clinic</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Multi-specialty clinic with chronic disease management and preventive care programs. Home healthcare available.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-red-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Home Healthcare</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-pills mr-2 text-purple-600"></i>Specialty Care</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-purple-600 to-blue-600 text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center opacity-90">
+                <p>&copy; 2024 UAE Mart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

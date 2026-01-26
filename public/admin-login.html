@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - UAE Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="../config.js"></script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+    </style>
+</head>
+<body>
+    <div class="glass-card p-10 max-w-md w-full mx-4 animate-fadeIn">
+        <div class="text-center mb-8">
+            <div class="inline-block bg-blue-600 text-white w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                <i class="fas fa-crown text-3xl"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-800 mb-2">Admin Panel</h1>
+            <p class="text-gray-600">UAE Mart Management System</p>
+        </div>
+
+        <form id="adminLoginForm" class="space-y-6">
+            <div id="messageBox" class="hidden p-4 rounded-lg mb-4"></div>
+
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                    <i class="fas fa-envelope mr-2"></i>Admin Email
+                </label>
+                <input 
+                    type="email" 
+                    id="adminEmail" 
+                    required 
+                    class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition"
+                    placeholder="admin@uaemart.com"
+                >
+            </div>
+
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-2">
+                    <i class="fas fa-lock mr-2"></i>Admin Password
+                </label>
+                <input 
+                    type="password" 
+                    id="adminPassword" 
+                    required 
+                    class="w-full p-4 border-2 border-gray-300 rounded-lg focus:border-blue-600 focus:outline-none transition"
+                    placeholder="Enter admin password"
+                >
+            </div>
+
+            <button 
+                type="submit" 
+                class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-4 rounded-lg font-bold text-lg hover:from-blue-700 hover:to-blue-800 transition transform hover:scale-105"
+            >
+                <i class="fas fa-sign-in-alt mr-2"></i>Login to Admin Panel
+            </button>
+        </form>
+
+        <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+            <p class="text-sm text-blue-800">
+                <i class="fas fa-info-circle mr-2"></i>
+                <strong>Default Credentials:</strong><br>
+                Email: admin@uaemart.com<br>
+                Password: Admin@12345
+            </p>
+        </div>
+
+        <div class="mt-6 text-center">
+            <a href="index.html" class="text-blue-600 hover:underline">
+                <i class="fas fa-arrow-left mr-2"></i>Back to Website
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Load credentials from config file
+        const ADMIN_EMAIL = CONFIG.ADMIN.EMAIL;
+        const ADMIN_PASSWORD = CONFIG.ADMIN.PASSWORD;
+
+        document.getElementById('adminLoginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+                localStorage.setItem('adminUser', JSON.stringify({ email, role: 'admin' }));
+                showMessage('success', 'Login successful! Redirecting...');
+                setTimeout(() => {
+                    window.location.href = 'admin.html';
+                }, 1000);
+            } else {
+                showMessage('error', 'Invalid credentials. Please try again.');
+            }
+        });
+
+        function showMessage(type, text) {
+            const box = document.getElementById('messageBox');
+            box.className = `p-4 rounded-lg mb-4 ${type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`;
+            box.innerHTML = `<i class="fas fa-${type === 'success' ? 'check' : 'times'}-circle mr-2"></i>${text}`;
+            box.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

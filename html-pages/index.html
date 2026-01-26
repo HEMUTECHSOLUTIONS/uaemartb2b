@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UAE Mart - UAE's Premier B2B Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between gap-4">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-store text-3xl text-purple-600"></i>
+                    <span class="text-2xl font-bold gradient-text">UAE Mart</span>
+                </a>
+
+                <!-- Categories Dropdown -->
+                <div class="relative hidden md:block">
+                    <button onclick="toggleCategories()" class="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition font-semibold shadow-lg">
+                        <i class="fas fa-th text-sm"></i>
+                        <span>All Categories</span>
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <div id="categoriesDropdown" class="hidden absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-2xl border border-gray-200 z-50 max-h-[500px] overflow-y-auto">
+                        <!-- Categories will be loaded dynamically -->
+                    </div>
+                </div>
+                
+                <!-- Search Bar -->
+                <div class="hidden md:flex flex-1 max-w-2xl mx-8">
+                    <div class="relative w-full">
+                        <input type="text" placeholder="Search products and services..." class="w-full px-4 py-3 pr-12 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-blue-700">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden lg:flex items-center gap-4">
+                    <a href="become-seller.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
+                        <i class="fas fa-store"></i>Become a Seller
+                    </a>
+                    <a href="post-requirements.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
+                        <i class="fas fa-clipboard-list"></i>Post Requirements
+                    </a>
+                    <a href="login.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
+                        <i class="fas fa-sign-in-alt"></i>Login
+                    </a>
+                    <a href="signup.html" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition shadow-lg">
+                        Sign Up
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-purple-600 to-blue-600 text-white py-20">
+        <div class="container mx-auto px-4 text-center animate-fadeIn">
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">UAE's Premier B2B Marketplace</h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90 max-w-3xl mx-auto">
+                Connect with thousands of verified suppliers and buyers across the UAE
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="become-seller.html" class="bg-white text-purple-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-2xl hover:scale-105 transform">
+                    <i class="fas fa-rocket mr-2"></i>Start Selling for Free
+                </a>
+                <a href="categories.html" class="bg-purple-800 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-purple-900 transition shadow-2xl hover:scale-105 transform">
+                    <i class="fas fa-search mr-2"></i>Browse Products
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="text-center animate-fadeIn">
+                    <div class="text-4xl font-bold text-purple-600 mb-2">50K+</div>
+                    <div class="text-gray-600 font-medium">Active Suppliers</div>
+                </div>
+                <div class="text-center animate-fadeIn" style="animation-delay: 0.1s;">
+                    <div class="text-4xl font-bold text-purple-600 mb-2">2M+</div>
+                    <div class="text-gray-600 font-medium">Products Listed</div>
+                </div>
+                <div class="text-center animate-fadeIn" style="animation-delay: 0.2s;">
+                    <div class="text-4xl font-bold text-purple-600 mb-2">100K+</div>
+                    <div class="text-gray-600 font-medium">Happy Buyers</div>
+                </div>
+                <div class="text-center animate-fadeIn" style="animation-delay: 0.3s;">
+                    <div class="text-4xl font-bold text-purple-600 mb-2">7</div>
+                    <div class="text-gray-600 font-medium">Emirates Covered</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Browse by Category Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fadeIn">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Browse by Category</h2>
+                <p class="text-xl text-gray-600">Discover products and services across various industries</p>
+            </div>
+
+            <div id="homeCategoriesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Categories will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose UAE Mart Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12 animate-fadeIn">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Why Choose UAE Mart?</h2>
+                <p class="text-xl text-gray-600">Join thousands of successful businesses growing with our platform</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-6 animate-fadeIn">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center text-4xl animate-float">
+                        🎯
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Reach More Customers</h3>
+                    <p class="text-gray-600">Connect with thousands of buyers across the UAE</p>
+                </div>
+
+                <div class="text-center p-6 animate-fadeIn" style="animation-delay: 0.1s;">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-green-500 to-teal-500 rounded-full flex items-center justify-center text-4xl animate-float" style="animation-delay: 0.5s;">
+                        💰
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Increase Revenue</h3>
+                    <p class="text-gray-600">Generate more leads and close more deals</p>
+                </div>
+
+                <div class="text-center p-6 animate-fadeIn" style="animation-delay: 0.2s;">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center text-4xl animate-float" style="animation-delay: 1s;">
+                        🌐
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Online Presence</h3>
+                    <p class="text-gray-600">Get your own business webpage</p>
+                </div>
+
+                <div class="text-center p-6 animate-fadeIn" style="animation-delay: 0.3s;">
+                    <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-4xl animate-float" style="animation-delay: 1.5s;">
+                        📊
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3">Business Insights</h3>
+                    <p class="text-gray-600">Track performance with analytics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="container mx-auto px-4 text-center animate-fadeIn">
+            <h2 class="text-4xl font-bold mb-4">Ready to Grow Your Business?</h2>
+            <p class="text-xl mb-8 opacity-90">Join UAE Mart today and start reaching more customers</p>
+            <a href="become-seller.html" class="inline-block bg-white text-purple-600 px-10 py-4 rounded-lg font-bold text-xl hover:bg-gray-100 transition shadow-2xl hover:scale-105 transform">
+                <i class="fas fa-rocket mr-2"></i>Get Started for Free
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- About -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-store text-3xl text-purple-400"></i>
+                        <span class="text-2xl font-bold">UAE Mart</span>
+                    </div>
+                    <p class="text-gray-400">UAE's leading B2B marketplace connecting suppliers and buyers across all emirates.</p>
+                    <p class="text-gray-500 mt-4">© 2024 UAE Mart. All rights reserved.</p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-home mr-2"></i>Home</a></li>
+                        <li><a href="categories.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-th mr-2"></i>Categories</a></li>
+                        <li><a href="become-seller.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-store mr-2"></i>Become a Seller</a></li>
+                        <li><a href="post-requirements.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-clipboard-list mr-2"></i>Post Requirements</a></li>
+                    </ul>
+                </div>
+
+                <!-- Account -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Account</h3>
+                    <ul class="space-y-2">
+                        <li><a href="login.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-sign-in-alt mr-2"></i>Login</a></li>
+                        <li><a href="signup.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-user-plus mr-2"></i>Sign Up</a></li>
+                        <li><a href="user-profile.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-user mr-2"></i>My Profile</a></li>
+                        <li><a href="dashboard.html" class="text-gray-400 hover:text-white transition"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Us -->
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-3 text-gray-400">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-map-marker-alt mt-1 text-purple-400"></i>
+                            <span>Dubai, UAE</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-phone text-purple-400"></i>
+                            <span>+971-4-XXX-XXXX</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-envelope text-purple-400"></i>
+                            <span>info@uaemart.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize categories on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            initializeCategories();
+            loadCategoriesDropdown();
+            loadHomeCategoriesGrid();
+        });
+
+        // Initialize Categories from default data - Force reset to 9 categories
+        function initializeCategories() {
+            // Force reset to ensure 9 categories only
+            const defaultCategories = [
+                    {id: 1, name: 'Food, Accommodation and Apparels', parentCategory: '', subcategories: 'Veg Restaurants,Non-Veg Restaurants,Hotels,1 Star Hotels,2 Star Hotels,3 Star Hotels,4 Star Hotels,5 Star Hotels,Resorts,Family Hotels,Budget Hotels,Cafes & Bakeries,Catering Services,Food Supplies,Men\'s Clothing,Women\'s Clothing,Kids Clothing,Footwear & Accessories', icon: 'fa-utensils', description: 'Food hospitality and fashion products', totalProducts: 163000, totalSuppliers: 3630, status: 'active', displayOrder: 1, createdAt: '2024-01-01 00:00:00'},
+                    {id: 2, name: 'Education', parentCategory: '', subcategories: 'Schools & Colleges,Training Centers,Online Learning,Educational Materials,Tutoring Services,Language Institutes,Vocational Training', icon: 'fa-graduation-cap', description: 'Educational services and training programs', totalProducts: 38000, totalSuppliers: 760, status: 'active', displayOrder: 2, createdAt: '2024-01-01 00:00:00'},
+                    {id: 3, name: 'Health', parentCategory: '', subcategories: 'Hospitals & Clinics,Pharmacies,Medical Equipment,Healthcare Services,Wellness Centers,Diagnostic Labs,Dental Services', icon: 'fa-heartbeat', description: 'Medical equipment and healthcare supplies', totalProducts: 55000, totalSuppliers: 1120, status: 'active', displayOrder: 3, createdAt: '2024-01-01 00:00:00'},
+                    {id: 4, name: 'Industries', parentCategory: '', subcategories: 'Manufacturing,Construction Materials,Industrial Equipment,Heavy Machinery,Tools & Hardware,Safety Equipment,Raw Materials', icon: 'fa-industry', description: 'Industrial products and services', totalProducts: 300000, totalSuppliers: 6190, status: 'active', displayOrder: 4, createdAt: '2024-01-01 00:00:00'},
+                    {id: 5, name: 'Information Technology', parentCategory: '', subcategories: 'Software Development,IT Consulting,Cloud Services,Cybersecurity,Hardware & Networking,Web Development,Mobile Apps', icon: 'fa-laptop-code', description: 'Software development and IT solutions', totalProducts: 42000, totalSuppliers: 890, status: 'active', displayOrder: 5, createdAt: '2024-01-01 00:00:00'},
+                    {id: 6, name: 'Media and Entertainment', parentCategory: '', subcategories: 'Printing Services,Advertising,Event Management,Photography & Videography,Broadcasting,Digital Marketing,Content Creation', icon: 'fa-film', description: 'Media advertising and entertainment services', totalProducts: 32000, totalSuppliers: 720, status: 'active', displayOrder: 6, createdAt: '2024-01-01 00:00:00'},
+                    {id: 7, name: 'Real Estate', parentCategory: '', subcategories: 'Residential Properties,Commercial Properties,Land & Plots,Property Management,Real Estate Consulting,Interior Design,Furniture & Furnishing', icon: 'fa-building', description: 'Property and real estate related services', totalProducts: 24000, totalSuppliers: 450, status: 'active', displayOrder: 7, createdAt: '2024-01-01 00:00:00'},
+                    {id: 8, name: 'Travel and Tourism', parentCategory: '', subcategories: 'Tour Packages,Travel Agencies,Flight Booking,Hotel Booking,Car Rentals,Visa Services,Tourist Attractions', icon: 'fa-plane', description: 'Travel tourism and transportation services', totalProducts: 45000, totalSuppliers: 980, status: 'active', displayOrder: 8, createdAt: '2024-01-01 00:00:00'},
+                    {id: 9, name: 'Miscellaneous', parentCategory: '', subcategories: 'Cleaning Services,Logistics & Shipping,Automotive Services,Electronics Repair,Pet Services,Beauty & Spa,Financial Services', icon: 'fa-boxes', description: 'Other products and services', totalProducts: 85000, totalSuppliers: 1650, status: 'active', displayOrder: 9, createdAt: '2024-01-01 00:00:00'}
+                ];
+            localStorage.setItem('categories', JSON.stringify(defaultCategories));
+        }
+
+        // Load home page categories grid
+        function loadHomeCategoriesGrid() {
+            const categories = JSON.parse(localStorage.getItem('categories') || '[]');
+            const activeCategories = categories.filter(cat => cat.status === 'active').sort((a, b) => a.displayOrder - b.displayOrder);
+            
+            const iconColors = ['text-yellow-500', 'text-blue-500', 'text-green-500', 'text-red-500', 'text-purple-500', 'text-indigo-500', 'text-pink-500', 'text-teal-500', 'text-orange-500'];
+            
+            const html = activeCategories.map((cat, index) => `
+                <a href="categories.html?cat=${cat.id}" class="glass-card p-8 hover:shadow-2xl transition hover:-translate-y-2 transform animate-fadeIn" style="animation-delay: ${index * 0.1}s;">
+                    <div class="text-5xl mb-4"><i class="fas ${cat.icon} ${iconColors[index % iconColors.length]}"></i></div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">${cat.name}</h3>
+                    <p class="text-gray-600 mb-4">${cat.description}</p>
+                    <div class="text-purple-600 font-semibold">${cat.totalProducts?.toLocaleString() || 0}+ items available</div>
+                </a>
+            `).join('');
+            
+            document.getElementById('homeCategoriesGrid').innerHTML = html;
+        }
+
+        // Load categories into dropdown
+        function loadCategoriesDropdown() {
+            const categories = JSON.parse(localStorage.getItem('categories') || '[]');
+            const activeCategories = categories.filter(cat => cat.status === 'active').sort((a, b) => a.displayOrder - b.displayOrder);
+            
+            let html = `
+                <a href="categories.html" class="flex items-center gap-3 px-4 py-3 hover:bg-purple-50 transition border-b border-gray-100">
+                    <i class="fas fa-list text-purple-600 text-lg w-6"></i>
+                    <span class="font-semibold text-gray-800">All Categories</span>
+                </a>
+            `;
+            
+            activeCategories.forEach(cat => {
+                const subcats = cat.subcategories ? cat.subcategories.split(',').slice(0, 3) : [];
+                
+                html += `
+                    <div class="border-b border-gray-100 hover:bg-purple-50 transition">
+                        <a href="categories.html?cat=${cat.id}" class="flex items-center gap-3 px-4 py-3">
+                            <i class="fas ${cat.icon} text-purple-600 text-lg w-6"></i>
+                            <div class="flex-1">
+                                <div class="font-medium text-gray-800">${cat.name}</div>
+                                <div class="text-xs text-gray-500">${cat.totalProducts?.toLocaleString() || 0}+ items</div>
+                            </div>
+                        </a>
+                        ${subcats.length > 0 ? `
+                            <div class="px-4 pb-2 text-xs text-gray-600 flex flex-wrap gap-1">
+                                ${subcats.map(sub => `<span class="bg-gray-100 px-2 py-1 rounded">${sub.trim()}</span>`).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            });
+            
+            document.getElementById('categoriesDropdown').innerHTML = html;
+        }
+
+        // Toggle categories dropdown
+        function toggleCategories() {
+            const dropdown = document.getElementById('categoriesDropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('categoriesDropdown');
+            const categoriesButton = event.target.closest('button[onclick="toggleCategories()"]');
+            
+            // If click is outside the button and dropdown is visible
+            if (!categoriesButton && !dropdown.classList.contains('hidden')) {
+                const clickedInsideDropdown = dropdown.contains(event.target);
+                if (!clickedInsideDropdown) {
+                    dropdown.classList.add('hidden');
+                }
+            }
+        });
+
+        // Prevent closing when clicking inside dropdown
+        document.getElementById('categoriesDropdown')?.addEventListener('click', function(event) {
+            // Allow links to work, but prevent dropdown from closing on other clicks
+            if (event.target.tagName !== 'A') {
+                event.stopPropagation();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schools & Colleges - UAE Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between gap-4">
+                <a href="../../html-pages/index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-store text-3xl text-purple-600"></i>
+                    <span class="text-2xl font-bold">UAE Mart</span>
+                </a>
+                <nav class="hidden lg:flex items-center gap-4">
+                    <a href="../../html-pages/categories.html" class="text-gray-700 hover:text-purple-600 transition">All Categories</a>
+                    <a href="../../html-pages/login.html" class="text-gray-700 hover:text-purple-600 transition">Login</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="mb-8">
+            <h1 class="text-4xl font-bold text-gray-800 mb-2 animate-fadeIn">
+                <i class="fas fa-school mr-3 text-blue-600"></i>Schools & Colleges
+            </h1>
+            <p class="text-xl text-gray-600 animate-fadeIn">Premier educational institutions across UAE</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- School 1 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-blue-500 to-cyan-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-school text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Al Manara International School</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Leading international school offering CBSE curriculum with modern facilities, sports complex, and laboratory.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-users mr-2 text-purple-600"></i>KG to Grade 12</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-graduation-cap mr-2 text-blue-600"></i>CBSE Curriculum</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- School 2 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-indigo-500 to-blue-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-book-open text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Emirates Heights School</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Prestigious British curriculum school with world-class infrastructure, competitive academics, and arts programs.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-users mr-2 text-purple-600"></i>Nursery to Grade 13</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-graduation-cap mr-2 text-blue-600"></i>British Curriculum</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- School 3 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-purple-500 to-indigo-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-globe text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Global Vision Academy</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Sharjah</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">American curriculum school focused on STEM education with technology labs and innovation centers.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-users mr-2 text-purple-600"></i>Pre-K to Grade 12</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-graduation-cap mr-2 text-blue-600"></i>American Curriculum</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- School 4 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-green-500 to-emerald-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-leaf text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Green Valley International</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Ajman</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">IB curriculum school with eco-friendly campus, sustainability programs, and holistic education approach.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-users mr-2 text-purple-600"></i>Grade 1 to 12</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-graduation-cap mr-2 text-blue-600"></i>IB Curriculum</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- College 1 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-red-500 to-pink-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-university text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">UAE Business College</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Higher education institution offering bachelor and master degrees in business, engineering, and IT.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-graduation-cap mr-2 text-purple-600"></i>Bachelor & Masters</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-certificate mr-2 text-blue-600"></i>Accredited Programs</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- College 2 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-orange-500 to-red-600 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-microscope text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Gulf Institute of Technology</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Abu Dhabi</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Technical and vocational institution with hands-on training in engineering, IT, and skilled trades.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-2-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-graduation-cap mr-2 text-purple-600"></i>Diplomas & Certificates</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-tools mr-2 text-blue-600"></i>Practical Training</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- School 7 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-cyan-600 to-blue-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-book text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Horizon International School</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">IB and Cambridge curriculum with state-of-the-art facilities. Emphasis on STEM and global perspective.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>IB & Cambridge</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-microscope mr-2 text-blue-600"></i>STEM Focus</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- School 8 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-teal-600 to-cyan-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-chalkboard text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Sunrise Academy International</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Sharjah</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">American curriculum with holistic development focus. Strong arts, music, and athletics programs.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>American Curriculum</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-music mr-2 text-blue-600"></i>Arts & Music</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- School 9 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-indigo-600 to-purple-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-globe text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Sterling Academy</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai Marina</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Cambridge and IGCSE excellence with rigorous academics. Multilingual programs and cultural diversity.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Cambridge IGCSE</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-globe mr-2 text-blue-600"></i>Multilingual</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- School 10 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-blue-600 to-cyan-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-lightbulb text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full"><i class="fas fa-check-circle mr-1"></i>Verified</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Innovation Academy Dubai</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Dubai</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Project-based learning with entrepreneurship focus. Coding and robotics integration in curriculum.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-4-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Coding & Robotics</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-lightbulb mr-2 text-blue-600"></i>Project-Based</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+
+            <!-- School 11 -->
+            <div class="glass-card overflow-hidden hover:shadow-2xl transition-all card-hover animate-fadeIn">
+                <div class="bg-gradient-to-br from-green-600 to-emerald-700 p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <i class="fas fa-leaf text-3xl text-white"></i>
+                        <span class="px-2 py-1 bg-white bg-opacity-30 text-white text-xs rounded-full font-bold"><i class="fas fa-crown mr-1"></i>Premium</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-white">Eco-Vision International School</h3>
+                    <p class="text-white text-opacity-90 text-sm"><i class="fas fa-map-marker-alt mr-1"></i>Ajman</p>
+                </div>
+                <div class="p-6">
+                    <p class="text-gray-600 mb-4">Sustainability-focused education with eco-friendly campus. British curriculum with environmental projects.</p>
+                    <div class="space-y-2 mb-4">
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-phone mr-2 text-blue-600"></i>+971-6-XXX-XXXX</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-check text-green-600 mr-2"></i>Sustainability</div>
+                        <div class="flex items-center text-sm text-gray-600"><i class="fas fa-leaf mr-2 text-blue-600"></i>Environmental</div>
+                    </div>
+                    <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 rounded-lg font-semibold transition">View Details</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-purple-600 to-blue-600 text-white mt-12">
+        <div class="container mx-auto px-4 py-8">
+            <div class="text-center opacity-90">
+                <p>&copy; 2024 UAE Mart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

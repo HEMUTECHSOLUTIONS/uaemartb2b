@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - UAE Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+    </style>
+</head>
+<body>
+    <header class="glass-card mx-4 my-4 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-purple-600"><i class="fas fa-store mr-2"></i>UAE Mart</a>
+            <nav class="flex gap-4 items-center">
+                <span id="userName" class="text-gray-700"></span>
+                <button onclick="logout()" class="px-4 py-2 text-red-600 hover:bg-red-50 rounded-lg"><i class="fas fa-sign-out mr-2"></i>Logout</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="glass-card p-8 animate-fadeIn">
+            <h1 class="text-3xl font-bold mb-6"><i class="fas fa-dashboard mr-2 text-purple-600"></i>Dashboard</h1>
+            
+            <div id="userInfo" class="bg-purple-50 p-6 rounded-lg mb-6 border border-purple-200"></div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <i class="fas fa-chart-line text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Total Orders</h3>
+                    <p class="text-3xl font-bold text-purple-600">0</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <i class="fas fa-shopping-cart text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Products</h3>
+                    <p class="text-3xl font-bold text-purple-600">0</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <i class="fas fa-dollar-sign text-4xl text-purple-600 mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Revenue</h3>
+                    <p class="text-3xl font-bold text-purple-600">AED 0</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="glass-card mx-4 my-4 p-6 text-center">
+        <p class="text-gray-700">© 2025 UAE Mart</p>
+    </footer>
+
+    <script>
+        const user = JSON.parse(localStorage.getItem('currentUser'));
+        
+        if (!user) {
+            window.location.href = 'login.html';
+        } else {
+            document.getElementById('userName').textContent = user.businessName || user.email;
+            document.getElementById('userInfo').innerHTML = `
+                <p class="text-lg"><strong>Welcome, ${user.businessName || user.email}!</strong></p>
+                <p class="text-gray-600">Email: ${user.email}</p>
+                <p class="text-gray-600">Username: ${user.username || user.businessName}</p>
+                <p class="text-gray-600">Default Password: UAEmart@123</p>
+            `;
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
