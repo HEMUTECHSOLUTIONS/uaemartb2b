@@ -217,7 +217,7 @@
                                 <td colspan="5" class="text-center text-gray-500">Fetching seller data...</td>
                             </tr>
                         </tbody>
-                            // Fetch and render buyers
+                            // Fetch and render buyers from Supabase API
                             async function loadBuyers() {
                                 try {
                                     const res = await fetch('/api/users?type=buyer');
@@ -241,7 +241,7 @@
                                 }
                             }
 
-                            // Fetch and render sellers
+                            // Fetch and render sellers from Supabase API
                             async function loadSellers() {
                                 try {
                                     const res = await fetch('/api/companies');

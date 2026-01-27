@@ -3,14 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: [
-      'your-project.supabase.co',
-      'localhost',
+      'your-project.supabase.co', // Replace with your actual Supabase project domain
+      'www.uaemartb2b.com',
     ],
   },
-  env: {
-    NEXT_PUBLIC_SUPABASE_URL: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    NEXT_PUBLIC_SUPABASE_ANON_KEY: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY,
-  },
+  // Remove local env block; use Vercel/Supabase dashboard for env vars
 };
 
 module.exports = nextConfig;

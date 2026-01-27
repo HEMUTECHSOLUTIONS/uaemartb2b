@@ -1,13 +1,13 @@
 // API Route: Authentication - Register
 // Path: /api/auth/register/route.js
 
-import { userDb } from '@/lib/database';
+import { userDb, companyDb } from '@/lib/database';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 export async function POST(request) {
   try {
-    const { email, password, full_name, phone, user_type } = await request.json();
+    const { email, password, full_name, phone, user_type, company_name } = await request.json();
     
     // Validate input
     if (!email || !password || !full_name || !user_type) {
@@ -45,6 +45,25 @@ export async function POST(request) {
       phone,
       user_type,
     });
+
+    // If registering a seller, create a company profile
+    let company = null;
+    if (user_type === 'seller') {
+      // Require company_name for seller registration
+      if (!company_name) {
+        return Response.json(
+          { success: false, error: 'Company name is required for sellers' },
+          { status: 400 }
+        );
+      }
+      company = await companyDb.create({
+        user_id: user.id,
+        company_name,
+        email,
+        phone,
+        status: 'pending',
+      });
+    }
     
     // Generate JWT token
     const token = jwt.sign(
@@ -66,6 +85,7 @@ export async function POST(request) {
         data: {
           user: userWithoutPassword,
           token,
+          company,
         },
         message: 'Registration successful',
       },
