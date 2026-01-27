@@ -81,8 +81,12 @@
                             <i class="fas fa-sync mr-2"></i>Refresh
                         </button>
                         <button onclick="exportData()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
-                            <i class="fas fa-download mr-2"></i>Export
+                            <i class="fas fa-download mr-2"></i>Export to Excel
                         </button>
+                        <label class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 cursor-pointer ml-2">
+                            <i class="fas fa-upload mr-2"></i>Import Excel
+                            <input type="file" id="importExcelInput" accept=".xlsx,.xls,.csv" style="display:none" onchange="importData(event)">
+                        </label>
                     </div>
                 </div>
             </div>
@@ -176,6 +180,25 @@
             <!-- Sellers Section -->
             <div id="section-sellers" class="section">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Manage Sellers</h2>
+                <div class="glass-card p-6 mb-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Approval Pending</h3>
+                    <table class="w-full mb-4">
+                        <thead>
+                            <tr class="border-b">
+                                <th class="text-left py-3">Store Name</th>
+                                <th class="text-left py-3">Contact</th>
+                                <th class="text-left py-3">Status</th>
+                                <th class="text-left py-3">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pendingSellersList">
+                            <tr class="border-b">
+                                <td class="py-3">Loading...</td>
+                                <td colspan="3" class="text-center text-gray-500">Fetching pending sellers...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="glass-card p-6">
                     <table class="w-full">
                         <thead>
@@ -185,17 +208,84 @@
                                 <th class="text-left py-3">Products</th>
                                 <th class="text-left py-3">Status</th>
                                 <th class="text-left py-3">Actions</th>
+                                <th class="text-left py-3">Upload File</th>
                             </tr>
                         </thead>
                         <tbody id="sellersList">
                             <tr class="border-b">
                                 <td class="py-3">Loading...</td>
-                                <td colspan="4" class="text-center text-gray-500">Fetching seller data...</td>
+                                <td colspan="5" class="text-center text-gray-500">Fetching seller data...</td>
                             </tr>
                         </tbody>
                     </table>
+                        // File upload for sellers
+                        async function uploadSellerFile(companyId, inputId) {
+                            const input = document.getElementById(inputId);
+                            if (!input.files.length) return alert('Please select a file');
+                            const formData = new FormData();
+                            formData.append('file', input.files[0]);
+                            formData.append('companyId', companyId);
+                            try {
+                                const res = await fetch(`/api/companies/${companyId}/upload`, {
+                                    method: 'POST',
+                                    body: formData
+                                });
+                                const result = await res.json();
+                                if (result.success) {
+                                    alert('File uploaded successfully!');
+                                } else {
+                                    alert('Upload failed: ' + (result.error || 'Unknown error'));
+                                }
+                            } catch (e) {
+                                alert('Error uploading file');
+                            }
+                        }
                 </div>
             </div>
+        // Fetch and render pending sellers
+        async function loadPendingSellers() {
+            try {
+                const res = await fetch('/api/companies?status=pending');
+                const result = await res.json();
+                const tbody = document.getElementById('pendingSellersList');
+                if (!result.success || !result.data || result.data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4" class="text-center text-gray-500">No pending sellers</td></tr>';
+                    return;
+                }
+                tbody.innerHTML = result.data.map(seller => `
+                    <tr class="border-b">
+                        <td class="py-3">${seller.company_name || ''}</td>
+                        <td>${seller.email || ''} <br>${seller.phone || ''}</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td><button class="bg-green-600 text-white px-3 py-1 rounded" onclick="approveSeller('${seller.id}')">Approve</button></td>
+                    </tr>
+                `).join('');
+            } catch (e) {
+                document.getElementById('pendingSellersList').innerHTML = '<tr><td colspan="4" class="text-center text-gray-500">Error loading pending sellers</td></tr>';
+            }
+        }
+
+        async function approveSeller(companyId) {
+            if (!confirm('Approve this seller?')) return;
+            try {
+                const res = await fetch(`/api/companies/${companyId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: 'approved' })
+                });
+                const result = await res.json();
+                if (result.success) {
+                    alert('Seller approved!');
+                    loadPendingSellers();
+                    // Optionally refresh main sellers list
+                    refreshData();
+                } else {
+                    alert('Failed to approve seller');
+                }
+            } catch (e) {
+                alert('Error approving seller');
+            }
+        }
 
             <!-- Orders Section -->
             <div id="section-orders" class="section">
@@ -590,24 +680,66 @@
             event.target.closest('.menu-item')?.classList.add('active');
         }
 
-        function loadDashboardData() {
-            // Simulate loading data
-            document.getElementById('totalBuyers').textContent = Math.floor(Math.random() * 500) + 100;
-            document.getElementById('totalSellers').textContent = Math.floor(Math.random() * 200) + 50;
-            document.getElementById('totalOrders').textContent = Math.floor(Math.random() * 1000) + 200;
-            document.getElementById('totalProducts').textContent = Math.floor(Math.random() * 5000) + 1000;
-            document.getElementById('buyerCount').textContent = document.getElementById('totalBuyers').textContent;
-            document.getElementById('sellerCount').textContent = document.getElementById('totalSellers').textContent;
+        async function loadDashboardData() {
+            try {
+                const apiUrl = document.getElementById('apiUrl')?.value || '/api/dashboard';
+                const res = await fetch(apiUrl, { method: 'GET' });
+                const result = await res.json();
+                if (result.success && result.data) {
+                    document.getElementById('totalBuyers').textContent = result.data.totalBuyers || 0;
+                    document.getElementById('totalSellers').textContent = result.data.totalSellers || 0;
+                    document.getElementById('totalOrders').textContent = result.data.totalOrders || 0;
+                    document.getElementById('totalProducts').textContent = result.data.totalProducts || 0;
+                    document.getElementById('buyerCount').textContent = result.data.totalBuyers || 0;
+                    document.getElementById('sellerCount').textContent = result.data.totalSellers || 0;
+                } else {
+                    throw new Error('Failed to load dashboard data');
+                }
+            } catch (e) {
+                document.getElementById('totalBuyers').textContent = '0';
+                document.getElementById('totalSellers').textContent = '0';
+                document.getElementById('totalOrders').textContent = '0';
+                document.getElementById('totalProducts').textContent = '0';
+                document.getElementById('buyerCount').textContent = '0';
+                document.getElementById('sellerCount').textContent = '0';
+            }
         }
 
         function refreshData() {
             loadDashboardData();
+            loadPendingSellers();
             alert('Data refreshed successfully!');
         }
 
+
+        // SheetJS CDN
+        if (!window.XLSX) {
+            var script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';
+            document.head.appendChild(script);
+        }
+
         function exportData() {
-            alert('Exporting all data as CSV...');
-            // Simulate export
+            // Example: Export sellers table to Excel
+            var table = document.getElementById('sellersList');
+            if (!table) return alert('No seller data to export!');
+            var wb = XLSX.utils.table_to_book(table, {sheet: "Sellers"});
+            XLSX.writeFile(wb, 'sellers.xlsx');
+        }
+
+        function importData(event) {
+            var file = event.target.files[0];
+            if (!file) return;
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var data = new Uint8Array(e.target.result);
+                var workbook = XLSX.read(data, {type: 'array'});
+                var firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                var json = XLSX.utils.sheet_to_json(firstSheet, {header:1});
+                // TODO: Handle imported data (e.g., send to backend or update UI)
+                alert('Imported rows: ' + (json.length-1));
+            };
+            reader.readAsArrayBuffer(file);
         }
 
         function addProduct() {
@@ -788,6 +920,8 @@
 
         // Load settings when page loads
         setTimeout(loadSettingsData, 500);
+        // Load pending sellers on page load
+        setTimeout(loadPendingSellers, 500);
     </script>
 </body>
 </html>
