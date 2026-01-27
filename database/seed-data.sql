@@ -1,3 +1,8 @@
+-- Clear tables before seeding (add CASCADE for foreign keys)
+TRUNCATE TABLE companies CASCADE;
+TRUNCATE TABLE users CASCADE;
+TRUNCATE TABLE categories CASCADE;
+TRUNCATE TABLE cities CASCADE;
 -- UAEMart Seed Data
 -- Sample categories and initial data
 
