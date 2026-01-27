@@ -217,6 +217,54 @@
                                 <td colspan="5" class="text-center text-gray-500">Fetching seller data...</td>
                             </tr>
                         </tbody>
+                            // Fetch and render buyers
+                            async function loadBuyers() {
+                                try {
+                                    const res = await fetch('/api/users?type=buyer');
+                                    const result = await res.json();
+                                    const tbody = document.getElementById('buyersList');
+                                    if (!result.success || !result.data || result.data.length === 0) {
+                                        tbody.innerHTML = '<tr><td colspan="5" class="text-center text-gray-500">No buyers found</td></tr>';
+                                        return;
+                                    }
+                                    tbody.innerHTML = result.data.map(buyer => `
+                                        <tr class="border-b">
+                                            <td class="py-3">${buyer.full_name || ''}</td>
+                                            <td>${buyer.email || ''}</td>
+                                            <td>${buyer.phone || ''}</td>
+                                            <td>${buyer.created_at ? new Date(buyer.created_at).toLocaleDateString() : ''}</td>
+                                            <td>${buyer.status === 'pending' ? '<i class="fas fa-hourglass-half text-yellow-500" title="Pending Approval"></i>' : '<i class="fas fa-check-circle text-green-500" title="Approved"></i>'}</td>
+                                        </tr>
+                                    `).join('');
+                                } catch (e) {
+                                    document.getElementById('buyersList').innerHTML = '<tr><td colspan="5" class="text-center text-gray-500">Error loading buyers</td></tr>';
+                                }
+                            }
+
+                            // Fetch and render sellers
+                            async function loadSellers() {
+                                try {
+                                    const res = await fetch('/api/companies');
+                                    const result = await res.json();
+                                    const tbody = document.getElementById('sellersList');
+                                    if (!result.success || !result.data || result.data.length === 0) {
+                                        tbody.innerHTML = '<tr><td colspan="6" class="text-center text-gray-500">No sellers found</td></tr>';
+                                        return;
+                                    }
+                                    tbody.innerHTML = result.data.map(seller => `
+                                        <tr class="border-b">
+                                            <td class="py-3">${seller.company_name || ''}</td>
+                                            <td>${seller.email || ''} <br>${seller.phone || ''}</td>
+                                            <td>${seller.products_count || 0}</td>
+                                            <td>${seller.status === 'pending' ? '<i class="fas fa-hourglass-half text-yellow-500" title="Pending Approval"></i>' : '<i class="fas fa-check-circle text-green-500" title="Approved"></i>'}</td>
+                                            <td><!-- Actions here --></td>
+                                            <td><!-- Upload file here --></td>
+                                        </tr>
+                                    `).join('');
+                                } catch (e) {
+                                    document.getElementById('sellersList').innerHTML = '<tr><td colspan="6" class="text-center text-gray-500">Error loading sellers</td></tr>';
+                                }
+                            }
                     </table>
                         // File upload for sellers
                         async function uploadSellerFile(companyId, inputId) {
@@ -651,8 +699,9 @@
                 window.location.href = 'admin-login.html';
                 return;
             }
-            
             loadDashboardData();
+            loadBuyers();
+            loadSellers();
             initializeMenus();
         });
 
@@ -674,6 +723,8 @@
             if (section) {
                 section.classList.add('active');
                 document.getElementById('pageTitle').textContent = sectionName.charAt(0).toUpperCase() + sectionName.slice(1);
+                if (sectionName === 'buyers') loadBuyers();
+                if (sectionName === 'sellers') loadSellers();
             }
             // Update menu
             document.querySelectorAll('.menu-item').forEach(item => item.classList.remove('active'));
