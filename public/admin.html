@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: #f7f9fb; min-height: 100vh; }
         .sidebar { background: #1a2235; color: #fff; min-width: 240px; box-shadow: 2px 0 8px rgba(0,0,0,0.04); }
         .sidebar .logo { font-size: 1.7rem; font-weight: 700; letter-spacing: 1px; margin-bottom: 2.5rem; color: #60a5fa; }
@@ -34,16 +33,13 @@
         .section { display: none; }
         .section.active { display: block; }
         @media (max-width: 900px) { .main-content { padding: 1rem; } .stats-grid { grid-template-columns: 1fr; } }
-        /* Modern scrollbar */
         ::-webkit-scrollbar { width: 8px; background: #e5e7eb; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
-        /* Table hover */
         .table tbody tr:hover { background: #f3f4f6; }
     </style>
 </head>
 <body>
     <div class="flex h-screen">
-        <!-- Sidebar -->
         <aside class="sidebar p-8 flex flex-col">
             <div class="logo mb-8"><i class="fas fa-crown mr-2"></i> UAEMart Admin</div>
             <nav class="flex-1">
@@ -60,9 +56,7 @@
                 <div class="menu-item text-red-300" onclick="logout()"><i class="fas fa-sign-out mr-2"></i> Logout</div>
             </div>
         </aside>
-        <!-- Main Content -->
         <main class="main-content overflow-y-auto">
-            <!-- Header -->
             <div class="glass-card p-4 mb-6">
                 <div class="flex justify-between items-center">
                     <div>
@@ -73,15 +67,201 @@
                         <button onclick="refreshData()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
                             <i class="fas fa-sync mr-2"></i>Refresh
                         </button>
-                        <button onclick="exportData()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
-                            <i class="fas fa-download mr-2"></i>Export to Excel
-                        </button>
-                        <label class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 cursor-pointer ml-2">
-                            <i class="fas fa-upload mr-2"></i>Import Excel
-                            <input type="file" id="importExcelInput" accept=".xlsx,.xls,.csv" style="display:none" onchange="importData(event)">
-                        </label>
                     </div>
                 </div>
+            </div>
+            <div id="section-dashboard" class="section active">
+                <div class="stats-grid">
+                    <div class="glass-card stat-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="stat-label mb-2">Total Buyers</p>
+                                <p class="stat-value" id="totalBuyers">0</p>
+                            </div>
+                            <i class="fas fa-users text-5xl text-blue-200"></i>
+                        </div>
+                    </div>
+                    <div class="glass-card stat-card">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="stat-label mb-2">Total Sellers</p>
+                                <p class="stat-value" id="totalSellers">0</p>
+                            </div>
+                            <i class="fas fa-store text-5xl text-green-200"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="section-buyers" class="section">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Manage Buyers</h2>
+                <div class="glass-card p-6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Buyer Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Joined</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="buyersList">
+                            <tr><td colspan="5" class="text-center text-gray-500">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div id="section-sellers" class="section">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Manage Sellers</h2>
+                <div class="glass-card p-6 mb-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-2">Approval Pending</h3>
+                    <table class="table mb-4">
+                        <thead>
+                            <tr>
+                                <th>Store Name</th>
+                                <th>Contact</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="pendingSellersList">
+                            <tr><td colspan="4" class="text-center text-gray-500">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="glass-card p-6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Store Name</th>
+                                <th>Contact</th>
+                                <th>Products</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                                <th>Upload File</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sellersList">
+                            <tr><td colspan="6" class="text-center text-gray-500">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        function showSection(section) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById('section-' + section).classList.add('active');
+            document.querySelectorAll('.menu-item').forEach(m => m.classList.remove('active'));
+            document.querySelectorAll('.menu-item').forEach(m => {
+                if (m.textContent.trim().toLowerCase().includes(section)) m.classList.add('active');
+            });
+            document.getElementById('pageTitle').textContent = section.charAt(0).toUpperCase() + section.slice(1);
+        }
+        async function loadBuyers() {
+            try {
+                const res = await fetch('/api/users?type=buyer');
+                const result = await res.json();
+                const tbody = document.getElementById('buyersList');
+                if (!result.success || !result.data || result.data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="5" class="text-center text-gray-500">No buyers found</td></tr>';
+                    document.getElementById('buyerCount').textContent = '0';
+                    document.getElementById('totalBuyers').textContent = '0';
+                    return;
+                }
+                tbody.innerHTML = result.data.map(buyer => `
+                    <tr>
+                        <td>${buyer.full_name || ''}</td>
+                        <td>${buyer.email || ''}</td>
+                        <td>${buyer.phone || ''}</td>
+                        <td>${buyer.created_at ? new Date(buyer.created_at).toLocaleDateString() : ''}</td>
+                        <td>${buyer.status === 'pending' ? '<span class="badge badge-warning">Pending</span>' : '<span class="badge badge-success">Active</span>'}</td>
+                    </tr>
+                `).join('');
+                document.getElementById('buyerCount').textContent = result.data.length;
+                document.getElementById('totalBuyers').textContent = result.data.length;
+            } catch (e) {
+                document.getElementById('buyersList').innerHTML = '<tr><td colspan="5" class="text-center text-gray-500">Error loading buyers</td></tr>';
+            }
+        }
+        async function loadSellers() {
+            try {
+                const res = await fetch('/api/companies');
+                const result = await res.json();
+                const tbody = document.getElementById('sellersList');
+                if (!result.success || !result.data || result.data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="6" class="text-center text-gray-500">No sellers found</td></tr>';
+                    document.getElementById('sellerCount').textContent = '0';
+                    document.getElementById('totalSellers').textContent = '0';
+                    return;
+                }
+                tbody.innerHTML = result.data.map(seller => `
+                    <tr>
+                        <td>${seller.company_name || ''}</td>
+                        <td>${seller.email || ''} <br>${seller.phone || ''}</td>
+                        <td>${seller.products_count || 0}</td>
+                        <td>${seller.status === 'pending' ? '<span class="badge badge-warning">Pending</span>' : '<span class="badge badge-success">Approved</span>'}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                `).join('');
+                document.getElementById('sellerCount').textContent = result.data.length;
+                document.getElementById('totalSellers').textContent = result.data.length;
+            } catch (e) {
+                document.getElementById('sellersList').innerHTML = '<tr><td colspan="6" class="text-center text-gray-500">Error loading sellers</td></tr>';
+            }
+        }
+        async function loadPendingSellers() {
+            try {
+                const res = await fetch('/api/companies?status=pending');
+                const result = await res.json();
+                const tbody = document.getElementById('pendingSellersList');
+                if (!result.success || !result.data || result.data.length === 0) {
+                    tbody.innerHTML = '<tr><td colspan="4" class="text-center text-gray-500">No pending sellers</td></tr>';
+                    return;
+                }
+                tbody.innerHTML = result.data.map(seller => `
+                    <tr>
+                        <td>${seller.company_name || ''}</td>
+                        <td>${seller.email || ''} <br>${seller.phone || ''}</td>
+                        <td><span class="badge badge-warning">Pending</span></td>
+                        <td><button class="action-btn approve" onclick="approveSeller('${seller.id}')">Approve</button></td>
+                    </tr>
+                `).join('');
+            } catch (e) {
+                document.getElementById('pendingSellersList').innerHTML = '<tr><td colspan="4" class="text-center text-gray-500">Error loading pending sellers</td></tr>';
+            }
+        }
+        async function approveSeller(companyId) {
+            if (!confirm('Approve this seller?')) return;
+            try {
+                const res = await fetch(`/api/companies/${companyId}`, {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ status: 'approved' })
+                });
+                const result = await res.json();
+                if (result.success) {
+                    alert('Seller approved!');
+                    loadPendingSellers();
+                    loadSellers();
+                } else {
+                    alert('Failed to approve seller');
+                }
+            } catch (e) {
+                alert('Error approving seller');
+            }
+        }
+        function refreshData() {
+            loadBuyers();
+            loadSellers();
+            loadPendingSellers();
+        }
+        setTimeout(refreshData, 500);
+    </script>
+</body>
+</html>
             </div>
 
             <!-- Dashboard Section -->
