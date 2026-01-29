@@ -7,83 +7,60 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        body { background: #F5F7FA !important; color: #111827; }
-        .arctic-header { background: #fff; border-bottom: 1px solid #E5E7EB; box-shadow: 0 2px 8px rgba(31,41,55,0.03); }
-        .arctic-logo { color: #2563EB; }
-        .arctic-btn-primary { background: #2563EB; color: #fff; border-radius: 10px; font-weight: 600; transition: background 0.2s; }
-        .arctic-btn-primary:hover { background: #1F2937; }
-        .arctic-btn-accent { background: #14B8A6; color: #fff; border-radius: 10px; font-weight: 600; }
-        .arctic-btn-accent:hover { background: #2563EB; }
-        .arctic-card { background: rgba(255,255,255,0.98); border-radius: 12px; box-shadow: 0 4px 24px rgba(31,41,55,0.07); border: 1px solid #E5E7EB; }
-        .arctic-divider { border-color: #E5E7EB; }
-        .arctic-text-muted { color: #6B7280; }
-        .arctic-link { color: #2563EB; text-decoration: none; }
-        .arctic-link:hover { color: #14B8A6; }
-        .arctic-shadow { box-shadow: 0 8px 32px rgba(31,41,55,0.08); }
-        .arctic-rounded { border-radius: 12px; }
-        .arctic-input { border: 1px solid #E5E7EB; border-radius: 8px; background: #fff; color: #111827; }
-        .arctic-input:focus { border-color: #2563EB; outline: none; }
-        .arctic-section { background: #fff; border-radius: 12px; box-shadow: 0 2px 8px rgba(31,41,55,0.04); border: 1px solid #E5E7EB; }
-        .arctic-cta { background: #2563EB; color: #fff; border-radius: 10px; font-weight: 600; }
-        .arctic-cta:hover { background: #1F2937; }
-        .arctic-hero { background: #F5F7FA; }
-        .arctic-bg-slate { background: #1F2937; color: #fff; }
-        .arctic-bg-accent { background: #14B8A6; color: #fff; }
-        .arctic-border { border: 1px solid #E5E7EB; }
-        .arctic-glass { background: rgba(255,255,255,0.98); backdrop-filter: blur(8px); border-radius: 12px; box-shadow: 0 4px 24px rgba(31,41,55,0.07); }
-        .arctic-shadow-hover:hover { box-shadow: 0 12px 32px rgba(31,41,55,0.12); }
-        .arctic-nav-link { color: #111827; font-weight: 500; border-radius: 8px; padding: 0.5rem 1rem; transition: background 0.2s; }
-        .arctic-nav-link:hover { background: #F5F7FA; color: #2563EB; }
-        .arctic-muted { color: #6B7280; }
-        .arctic-hero-title { color: #1F2937; font-weight: 800; }
-        .arctic-hero-desc { color: #6B7280; }
-        .arctic-hero-btn { background: #2563EB; color: #fff; border-radius: 10px; font-weight: 600; }
-        .arctic-hero-btn:hover { background: #14B8A6; }
-        .arctic-hero-btn-alt { background: #14B8A6; color: #fff; border-radius: 10px; font-weight: 600; }
-        .arctic-hero-btn-alt:hover { background: #2563EB; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        .animate-float { animation: float 3s ease-in-out infinite; }
+        .gradient-text { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-radius: 15px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); }
     </style>
 </head>
 <body class="bg-gray-50">
     <!-- Header -->
-    <header class="arctic-header sticky top-0 z-50">
+    <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4">
             <div class="flex items-center justify-between gap-4">
                 <a href="index.html" class="flex items-center space-x-2">
-                    <i class="fas fa-store text-3xl arctic-logo"></i>
-                    <span class="text-2xl font-bold" style="color:#1F2937">UAE Mart</span>
+                    <i class="fas fa-store text-3xl text-purple-600"></i>
+                    <span class="text-2xl font-bold gradient-text">UAE Mart</span>
                 </a>
+
                 <!-- Categories Dropdown -->
                 <div class="relative hidden md:block">
-                    <button onclick="toggleCategories()" class="flex items-center gap-2 px-4 py-2.5 arctic-btn-primary shadow-lg">
+                    <button onclick="toggleCategories()" class="flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg hover:from-purple-700 hover:to-blue-700 transition font-semibold shadow-lg">
                         <i class="fas fa-th text-sm"></i>
                         <span>All Categories</span>
                         <i class="fas fa-chevron-down text-xs"></i>
                     </button>
-                    <div id="categoriesDropdown" class="hidden absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-2xl arctic-border z-50 max-h-[500px] overflow-y-auto">
+                    <div id="categoriesDropdown" class="hidden absolute top-full left-0 mt-2 w-96 bg-white rounded-lg shadow-2xl border border-gray-200 z-50 max-h-[500px] overflow-y-auto">
                         <!-- Categories will be loaded dynamically -->
                     </div>
                 </div>
+                
                 <!-- Search Bar -->
                 <div class="hidden md:flex flex-1 max-w-2xl mx-8">
                     <div class="relative w-full">
-                        <input type="text" placeholder="Search products and services..." class="w-full px-4 py-3 pr-12 arctic-input">
-                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 arctic-btn-primary">
+                        <input type="text" placeholder="Search products and services..." class="w-full px-4 py-3 pr-12 border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-lg hover:from-purple-700 hover:to-blue-700">
                             <i class="fas fa-search"></i>
                         </button>
                     </div>
                 </div>
+
                 <!-- Navigation -->
                 <nav class="hidden lg:flex items-center gap-4">
-                    <a href="become-seller.html" class="arctic-nav-link flex items-center gap-2">
+                    <a href="become-seller.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
                         <i class="fas fa-store"></i>Become a Seller
                     </a>
-                    <a href="post-requirements.html" class="arctic-nav-link flex items-center gap-2">
+                    <a href="post-requirements.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
                         <i class="fas fa-clipboard-list"></i>Post Requirements
                     </a>
-                    <a href="login.html" class="arctic-nav-link flex items-center gap-2">
+                    <a href="login.html" class="text-gray-700 hover:text-purple-600 transition flex items-center gap-2">
                         <i class="fas fa-sign-in-alt"></i>Login
                     </a>
-                    <a href="signup.html" class="arctic-btn-primary px-6 py-2.5 font-semibold shadow-lg">Sign Up</a>
+                    <a href="signup.html" class="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition shadow-lg">
+                        Sign Up
+                    </a>
                 </nav>
             </div>
         </div>

@@ -94,10 +94,9 @@
     </div>
 
     <script>
-
-        // Hardcoded admin credentials (fallback if config.js fails)
-        const ADMIN_EMAIL = 'admin@uaemart.com';
-        const ADMIN_PASSWORD = 'Admin@12345';
+        // Load credentials from config file
+        const ADMIN_EMAIL = CONFIG.ADMIN.EMAIL;
+        const ADMIN_PASSWORD = CONFIG.ADMIN.PASSWORD;
 
         document.getElementById('adminLoginForm').addEventListener('submit', (e) => {
             e.preventDefault();

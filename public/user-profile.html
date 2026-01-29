@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - UAE Mart</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between gap-4">
+                <a href="index.html" class="flex items-center space-x-2">
+                    <i class="fas fa-store text-3xl text-purple-600"></i>
+                    <span class="text-2xl font-bold gradient-text">UAE Mart</span>
+                </a>
+                <nav class="hidden md:flex items-center gap-6">
+                    <a href="categories.html" class="text-gray-700 hover:text-purple-600"><i class="fas fa-th mr-2"></i>Categories</a>
+                    <a href="post-requirements.html" class="text-gray-700 hover:text-purple-600"><i class="fas fa-clipboard-list mr-2"></i>Post Requirements</a>
+                    <a href="become-seller.html" class="text-gray-700 hover:text-purple-600"><i class="fas fa-store mr-2"></i>Become a Seller</a>
+                    <a href="dashboard.html" class="text-gray-700 hover:text-purple-600"><i class="fas fa-tachometer-alt mr-2"></i>Dashboard</a>
+                    <a href="login.html" class="text-gray-700 hover:text-purple-600"><i class="fas fa-sign-in-alt mr-2"></i>Login</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <main class="container mx-auto px-4 py-8">
+        <section class="glass-card p-8 max-w-xl mx-auto animate-fadeIn">
+            <h1 class="text-3xl font-bold mb-4 flex items-center gap-2"><i class="fas fa-user text-purple-600"></i> My Profile</h1>
+            <div class="space-y-3">
+                <p><strong>Name:</strong> John Doe</p>
+                <p><strong>Email:</strong> johndoe@email.com</p>
+                <p><strong>Role:</strong> Buyer/Seller</p>
+                <a href="business-profile.html" class="inline-block mt-4 bg-purple-600 hover:bg-purple-700 text-white px-6 py-2.5 rounded-lg font-semibold transition-colors"><i class="fas fa-store mr-2"></i>View Business Profile</a>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-white text-center py-6 mt-12 border-t border-gray-200 text-gray-500">
+        <p>&copy; 2026 UAE Mart. All rights reserved.</p>
+    </footer>
+</body>
+</html>
