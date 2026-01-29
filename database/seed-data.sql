@@ -95,6 +95,29 @@ INSERT INTO users (id, email, password_hash, full_name, phone, user_type, is_ver
 ('aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa', 'admin@uaemart.com', '$2b$10$rPxLhEZxQBGQ8FQxLhEZxOE1G8FQxLhEZxQBGQ8FQxLhEZxQBGQ8F', 'UAEMart Admin', '+971501234567', 'admin', TRUE);
 
 -- ============================================
+-- SAMPLE BUYERS
+-- ============================================
+-- Password: Buyer@123 (bcrypt hashed: $2b$10$w1Qw1Qw1Qw1Qw1Qw1Qw1Qe1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Q)
+INSERT INTO users (id, email, password_hash, full_name, phone, user_type, is_verified) VALUES
+('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb', 'buyer1@uaemart.com', '$2b$10$w1Qw1Qw1Qw1Qw1Qw1Qw1Qe1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Q', 'Buyer One', '+971501111111', 'buyer', TRUE),
+('bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbc', 'buyer2@uaemart.com', '$2b$10$w1Qw1Qw1Qw1Qw1Qw1Qw1Qe1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Qw1Q', 'Buyer Two', '+971502222222', 'buyer', TRUE);
+
+-- ============================================
+-- SAMPLE SELLERS
+-- ============================================
+-- Password: Seller@123 (bcrypt hashed: $2b$10$e2e2e2e2e2e2e2e2e2e2eOe2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2)
+INSERT INTO users (id, email, password_hash, full_name, phone, user_type, is_verified) VALUES
+('cccccccc-cccc-cccc-cccc-cccccccccccc', 'seller1@uaemart.com', '$2b$10$e2e2e2e2e2e2e2e2e2e2eOe2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2', 'Seller One', '+971503333333', 'seller', TRUE),
+('cccccccc-cccc-cccc-cccc-cccccccccccd', 'seller2@uaemart.com', '$2b$10$e2e2e2e2e2e2e2e2e2e2eOe2e2e2e2e2e2e2e2e2e2e2e2e2e2e2e2', 'Seller Two', '+971504444444', 'seller', TRUE);
+
+-- ============================================
+-- SAMPLE COMPANIES FOR SELLERS
+-- ============================================
+INSERT INTO companies (id, user_id, company_name, email, phone, status) VALUES
+('dddddddd-dddd-dddd-dddd-dddddddddddd', 'cccccccc-cccc-cccc-cccc-cccccccccccc', 'Seller One Trading', 'seller1@uaemart.com', '+971503333333', 'approved'),
+('dddddddd-dddd-dddd-dddd-ddddddddddde', 'cccccccc-cccc-cccc-cccc-cccccccccccd', 'Seller Two Enterprises', 'seller2@uaemart.com', '+971504444444', 'pending');
+
+-- ============================================
 -- UAE CITIES DATA
 -- ============================================
 INSERT INTO cities (name, emirate, is_active) VALUES
