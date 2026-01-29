@@ -8,49 +8,49 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #F5F7FA; min-height: 100vh; }
-        .glass-card { background: rgba(255,255,255,0.85); backdrop-filter: blur(10px); border-radius: 10px; box-shadow: 0 4px 24px rgba(31,41,55,0.08); border: 1px solid #E5E7EB; }
+        body { font-family: 'Inter', sans-serif; background-color: #F5F7FA; min-height: 100vh; }
+        .glass-card { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(10px); border-radius: 10px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04); }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .animate-fadeIn { animation: fadeIn 0.6s ease-out; }
     </style>
 </head>
 <body>
-    <header class="glass-card mx-4 my-4 p-4">
+    <header class="glass-card mx-4 my-4 p-4" style="border: 1px solid #E5E7EB;">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-[#2563EB]"><i class="fas fa-store mr-2"></i>UAE Mart</a>
+            <a href="index.html" class="text-2xl font-bold" style="color: #1F2937;"><i class="fas fa-store mr-2" style="color: #14B8A6;"></i>UAE Mart</a>
             <nav class="flex gap-4 items-center">
-                <span id="userName" class="text-[#111827]"></span>
-                <button onclick="logout()" class="px-4 py-2 text-[#14B8A6] hover:bg-[#E5E7EB] rounded-lg"><i class="fas fa-sign-out mr-2"></i>Logout</button>
+                <span id="userName" style="color: #111827;"></span>
+                <button onclick="logout()" class="px-4 py-2" style="color: #2563EB; border-radius: 10px; border: 1px solid #2563EB; background: none;"><i class="fas fa-sign-out mr-2"></i>Logout</button>
             </nav>
         </div>
     </header>
 
     <main class="container mx-auto px-4 py-8">
         <div class="glass-card p-8 animate-fadeIn">
-            <h1 class="text-3xl font-bold mb-6"><i class="fas fa-dashboard mr-2 text-[#2563EB]"></i>Dashboard</h1>
-            <div id="userInfo" class="bg-[#F5F7FA] p-6 rounded-lg mb-6 border border-[#E5E7EB]"></div>
+            <h1 class="text-3xl font-bold mb-6" style="color: #1F2937;"><i class="fas fa-dashboard mr-2" style="color: #14B8A6;"></i>Dashboard</h1>
+            <div id="userInfo" style="background: rgba(245,247,250,0.7); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem; border: 1px solid #E5E7EB;"></div>
             <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-[#E5E7EB]">
-                    <i class="fas fa-chart-line text-4xl text-[#2563EB] mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2 text-[#1F2937]">Total Orders</h3>
-                    <p class="text-3xl font-bold text-[#2563EB]">0</p>
+                <div style="background: rgba(255,255,255,0.85); padding: 1.5rem; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid #E5E7EB;">
+                    <i class="fas fa-chart-line text-4xl mb-4" style="color: #14B8A6;"></i>
+                    <h3 class="text-xl font-bold mb-2" style="color: #1F2937;">Total Orders</h3>
+                    <p class="text-3xl font-bold" style="color: #2563EB;">0</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-[#E5E7EB]">
-                    <i class="fas fa-shopping-cart text-4xl text-[#2563EB] mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2 text-[#1F2937]">Products</h3>
-                    <p class="text-3xl font-bold text-[#2563EB]">0</p>
+                <div style="background: rgba(255,255,255,0.85); padding: 1.5rem; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid #E5E7EB;">
+                    <i class="fas fa-shopping-cart text-4xl mb-4" style="color: #14B8A6;"></i>
+                    <h3 class="text-xl font-bold mb-2" style="color: #1F2937;">Products</h3>
+                    <p class="text-3xl font-bold" style="color: #2563EB;">0</p>
                 </div>
-                <div class="bg-white p-6 rounded-lg shadow-lg border border-[#E5E7EB]">
-                    <i class="fas fa-dollar-sign text-4xl text-[#2563EB] mb-4"></i>
-                    <h3 class="text-xl font-bold mb-2 text-[#1F2937]">Revenue</h3>
-                    <p class="text-3xl font-bold text-[#2563EB]">AED 0</p>
+                <div style="background: rgba(255,255,255,0.85); padding: 1.5rem; border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid #E5E7EB;">
+                    <i class="fas fa-dollar-sign text-4xl mb-4" style="color: #14B8A6;"></i>
+                    <h3 class="text-xl font-bold mb-2" style="color: #1F2937;">Revenue</h3>
+                    <p class="text-3xl font-bold" style="color: #2563EB;">AED 0</p>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="glass-card mx-4 my-4 p-6 text-center">
-        <p class="text-[#6B7280]">© 2025 UAE Mart</p>
+    <footer class="glass-card mx-4 my-4 p-6 text-center" style="border: 1px solid #E5E7EB;">
+        <p style="color: #6B7280;">© 2025 UAE Mart</p>
     </footer>
 
     <script>
